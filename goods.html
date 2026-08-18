@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NFC 굿즈·콘텐츠 제작 문의 | 비글즈 팩토리</title>
+<meta name="description" content="비글즈 팩토리 NFC 굿즈·콘텐츠 제작 문의. 굿즈·수량·콘텐츠만 선택하면 담당 PM이 바로 연락드립니다.">
+<link rel="icon" href="assets/images/logo-bigglz.png">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img src="assets/images/logo-bigglz.png" alt="비글즈 로고">
+    </a>
+    <div class="header-actions">
+      <a href="tel:010-9523-7116" class="btn btn-kakao">💬 카톡으로 문의하기</a>
+      <a href="index.html" class="btn btn-ghost">← 홈으로</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- GOODS ENTRY (굿즈·콘텐츠 제작 문의) -->
+  <section class="inquiry" id="goods-entry">
+    <div class="container">
+      <div class="inquiry-head">
+        <span class="eyebrow">NFC 굿즈 제작 문의</span>
+        <h2 style="font-size:clamp(24px,3vw,32px);font-weight:800;">한 페이지에서 한 번에<br>NFC 굿즈 제작 상담을 시작하세요</h2>
+        <p style="margin-top:12px;color:var(--gray-500);">복잡한 기획서 없이도 괜찮아요. 아래 항목만 선택해주시면 담당 PM이 바로 연락드립니다.</p>
+      </div>
+
+      <form class="inquiry-form" id="inquiryForm">
+
+        <div class="form-section">
+          <div class="form-step-title">1. 브랜드 정보를 알려주세요</div>
+          <div class="form-step-sub">담당 PM이 연락드릴 기본 정보예요</div>
+
+          <div class="field">
+            <label>회사 / 브랜드명 <span class="req">*</span></label>
+            <input type="text" id="companyName" placeholder="예: 주식회사 비글즈" required>
+          </div>
+          <div class="field">
+            <label>담당자 성함과 직함 <span class="req">*</span></label>
+            <input type="text" id="managerName" placeholder="예: 홍길동 팀장" required>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label>연락처 <span class="req">*</span></label>
+              <input type="tel" id="phone" placeholder="010-1234-5678" required>
+            </div>
+            <div class="field">
+              <label>이메일 <span class="req">*</span></label>
+              <input type="email" id="email" placeholder="contact@bigglz.com" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div class="form-step-title">2. 어떤 굿즈를 제작할까요?</div>
+          <div class="form-step-sub">NFC 포토카드가 가장 많이 선택되는 굿즈예요</div>
+
+          <div class="field">
+            <label>제작하실 굿즈를 선택해주세요 <span class="req">*</span></label>
+            <div class="pick-grid two" id="goodsPick">
+              <div class="pick selected" data-value="NFC포토카드"><span class="star">추천</span>💳 NFC 포토카드<small>탭 한 번에 콘텐츠 연결</small></div>
+              <div class="pick" data-value="3D프린트 클릭커 키링">🧷 3D프린트 클릭커 키링<small>입체 3D 프린팅 굿즈</small></div>
+              <div class="pick" data-value="아크릴 키링">🔑 아크릴 키링<small>NFC 연동 가능</small></div>
+              <div class="pick" data-value="실리콘 스트랩">🎗️ 실리콘 스트랩<small>스트랩 + 태그</small></div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>키링고리(부자재)를 선택해주세요 (선택)</label>
+            <div class="pick-grid" id="hardwarePick">
+              <div class="pick selected" data-value="스플릿링(기본 동그란 열쇠고리)">⭕ 스플릿링<small>기본 동그란 고리</small></div>
+              <div class="pick" data-value="도금 볼체인">🔗 도금 볼체인</div>
+              <div class="pick" data-value="카라비너 후크">🧗 카라비너 후크</div>
+              <div class="pick" data-value="가죽 스트랩">🎀 가죽 스트랩</div>
+              <div class="pick" data-value="고리 없음">✋ 고리 없음</div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>제작 수량을 선택해주세요 <span class="req">*</span></label>
+            <div class="pick-grid two" id="qtyPick">
+              <div class="pick" data-value="100개 이하">100개 이하</div>
+              <div class="pick" data-value="300~500개">300 - 500개</div>
+              <div class="pick" data-value="1,000~5,000개">1,000 - 5,000개</div>
+              <div class="pick" data-value="10,000개 이상">10,000개 이상</div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>이미 사용하실 콘텐츠 링크가 있으신가요? (선택)</label>
+            <div class="pick-grid two" id="contentHasLinkPick">
+              <div class="pick" data-value="없음(비글즈 콘텐츠 중 선택)">🔍 없어요<small>비글즈 콘텐츠 중에서 고를게요</small></div>
+              <div class="pick" data-value="있음(직접 링크 입력)">🔗 있어요<small>제가 가진 링크를 넣을게요</small></div>
+            </div>
+          </div>
+
+          <div class="field" id="contentLinkField" style="display:none;">
+            <label>콘텐츠 링크를 입력해주세요</label>
+            <input type="text" id="contentLink" placeholder="https://...">
+          </div>
+
+          <div class="field" id="contentPickField">
+            <label>NFC 콘텐츠를 선택해주세요 (선택)</label>
+            <div class="pick-grid" id="contentPick">
+              <div class="pick" data-value="운세">🔮 운세</div>
+              <div class="pick" data-value="타로">🃏 타로</div>
+              <div class="pick" data-value="팬 포스트">📸 팬포스트</div>
+              <div class="pick" data-value="관광 지도">🗺️ 관광지도</div>
+              <div class="pick" data-value="챗봇">🤖 챗봇</div>
+              <div class="pick" data-value="캐릭터 AR">✨ 캐릭터 AR</div>
+            </div>
+            <p class="pick-hint">* 여러 개 선택할 수 있어요</p>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div class="form-step-title">3. 마지막으로 세부 사항이에요</div>
+          <div class="form-step-sub">필요 시점과 요청사항을 알려주세요</div>
+
+          <div class="field">
+            <label>포장 여부를 알려주세요</label>
+            <div class="pick-grid" id="packPick">
+              <div class="pick" data-value="기본 포장(OPP 봉투)">기본 포장</div>
+              <div class="pick" data-value="커스텀 포장(로고/메시지 포함)">커스텀 포장</div>
+              <div class="pick" data-value="포장 불필요">포장 불필요</div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>제품이 필요한 시점 (선택)</label>
+            <input type="date" id="needDate">
+          </div>
+
+          <div class="field">
+            <label>디자인 파일이 있다면 업로드해주세요 (선택)</label>
+            <label class="upload-box" for="designFile">
+              📎 클릭해서 파일 선택 (jpg, png, pdf, ai 등)
+              <input type="file" id="designFile">
+            </label>
+            <div class="upload-filename" id="uploadFilename"></div>
+          </div>
+
+          <div class="field">
+            <label>추가 문의 / 요청 사항 (선택)</label>
+            <textarea id="message" placeholder="레퍼런스 이미지, 희망 예산, 참고 링크 등 자유롭게 남겨주세요"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg">문의 제출하기 ✓</button>
+        </div>
+
+        <!-- SUCCESS -->
+        <div class="form-success" id="formSuccess">
+          <div class="check">✓</div>
+          <h3>문의가 준비됐어요!</h3>
+          <p>기본 이메일 앱이 열리면 내용을 확인 후 그대로 전송해주세요.<br>담당 PM이 확인 후 빠르게 연락드리겠습니다.</p>
+          <div class="actions">
+            <button type="button" class="btn btn-ghost" id="copyBtn">문의 내용 복사하기</button>
+            <a href="index.html" class="btn btn-primary">처음으로</a>
+          </div>
+        </div>
+      </form>
+
+      <p class="inquiry-note">* 본 페이지는 데모 사이트로, 제출 시 작성하신 이메일 앱을 통해 contact@bigglz.com 으로 문의 내용을 보낼 수 있도록 안내합니다.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 bigglz factory. All rights reserved.</span>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/bigglz_official" target="_blank" rel="noopener">IG</a>
+        <a href="https://bigglzfactory.com" target="_blank" rel="noopener">WEB</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/form.js"></script>
+</body>
+</html>

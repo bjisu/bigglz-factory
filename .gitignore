@@ -1,0 +1,22 @@
+# 배포 도구가 로컬에 만드는 연결 정보 (커밋하지 않음)
+.vercel
+.netlify
+
+# OS / 편집기 부산물
+.DS_Store
+Thumbs.db
+*.swp
+
+# 의존성 / 빌드 산출물 (추후 도입 시 대비)
+node_modules/
+dist/
+.cache/
+
+# 환경 변수
+.env
+.env.*
+!.env.example
+
+# 로그
+*.log
+npm-debug.log*

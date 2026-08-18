@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>고객지원 | 비글즈 팩토리</title>
+<meta name="description" content="비글즈 팩토리 고객지원 - NFC 카드 설정 가이드(안드로이드·아이폰)와 자주 묻는 질문(Q&A)을 확인하세요. 태그가 안 될 때 문제 해결 방법도 안내합니다.">
+<link rel="icon" href="assets/images/logo-bigglz.png">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img src="assets/images/logo-bigglz.png" alt="비글즈 로고">
+    </a>
+    <div class="header-actions">
+      <a href="tel:010-9523-7116" class="btn btn-kakao">💬 카톡으로 문의하기</a>
+      <a href="index.html" class="btn btn-ghost">← 홈으로</a>
+    </div>
+  </div>
+</header>
+
+<main class="subpage">
+
+  <!-- SUPPORT HERO -->
+  <section class="support-hero">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">● Customer Support · 고객지원</span>
+        <h2>무엇을<br><span class="grad">도와드릴까요?</span></h2>
+        <p>NFC 카드 사용법과 자주 묻는 질문을 정리했습니다. 원하는 항목을 선택해 바로 확인하세요.</p>
+      </div>
+      <div class="support-nav">
+        <a href="https://www.vvfystudio.com/NFCGuide" target="_blank" rel="noopener" class="support-nav-card">
+          <div class="sn-icon">📲</div>
+          <h3>NFC 가이드</h3>
+          <p>기기별 NFC 설정과 태그 방법, 인식이 안 될 때 해결법</p>
+          <span class="cc-go">가이드 보기 ↗</span>
+        </a>
+        <a href="#qna" class="support-nav-card">
+          <div class="sn-icon">💬</div>
+          <h3>Q&amp;A</h3>
+          <p>제작·주문·NFC 굿즈에 대해 자주 묻는 질문 모음</p>
+          <span class="cc-go">질문 보기 →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NFC GUIDE -->
+  <section class="nfc-guide" id="nfc-guide">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">NFC 가이드</span>
+        <h2>사용하시는 기기를 선택하세요</h2>
+        <p>기기에 맞는 상세 설정 가이드를 안내해 드릴게요.</p>
+      </div>
+
+      <div class="guide-tabs" id="guideTabs">
+        <button class="guide-tab active" data-tab="android">🤖 안드로이드</button>
+        <button class="guide-tab" data-tab="iphone"> 아이폰</button>
+      </div>
+
+      <!-- Android -->
+      <div class="guide-panel active" data-panel="android">
+        <div class="guide-steps">
+          <div class="guide-step">
+            <div class="badge">01</div>
+            <h4>지원 기종 확인</h4>
+            <p>기기가 NFC를 지원하는지 확인하세요. "기종명 + NFC"로 검색하면 쉽게 알 수 있습니다.</p>
+          </div>
+          <div class="guide-step">
+            <div class="badge">02</div>
+            <h4>NFC 기능 켜기</h4>
+            <p>상단바를 아래로 내려 설정창을 열고 NFC를 켜세요. 버튼을 길게 누르면 '태그 읽기/쓰기' 또는 기본 모드로 설정할 수 있습니다.</p>
+          </div>
+          <div class="guide-step">
+            <div class="badge">03</div>
+            <h4>카드에 태그</h4>
+            <p>스마트폰 <b>뒷면 중앙 또는 상단</b>을 카드에 대세요. 정확한 안테나 위치는 기종마다 다릅니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- iPhone -->
+      <div class="guide-panel" data-panel="iphone">
+        <div class="guide-steps">
+          <div class="guide-step">
+            <div class="badge">01</div>
+            <h4>지원 기종 확인</h4>
+            <p>아이폰은 <b>7 시리즈 이후</b>(2016년 8월 이후 출시 모델)부터 NFC를 지원합니다.</p>
+          </div>
+          <div class="guide-step">
+            <div class="badge">02</div>
+            <h4>구형 기기 활성화</h4>
+            <p>iPhone XR 이전 모델은 설정 &gt; 제어센터에서 'NFC 태그 리더기'를 추가하세요. XR 이후는 자동 활성화됩니다.</p>
+          </div>
+          <div class="guide-step">
+            <div class="badge">03</div>
+            <h4>안테나 위치에 태그</h4>
+            <p><b>카메라 옆(뒷면 오른쪽 상단)</b>에 안테나가 있습니다. 이 부분을 카드에 대세요.</p>
+          </div>
+          <div class="guide-step">
+            <div class="badge">04</div>
+            <h4>인식 타이밍</h4>
+            <p>화면 잠금을 해제한 직후 또는 화면을 켜자마자 태그하면 가장 잘 인식됩니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Troubleshooting -->
+      <div class="guide-trouble">
+        <h3>😵 태그가 잘 안 되시나요?</h3>
+        <p class="gt-sub">아래 항목을 순서대로 확인해 보세요.</p>
+        <div class="gt-grid">
+          <div class="gt-item"><span class="gt-ico">🔧</span><div><b>NFC · 읽기/쓰기 모드</b><br>기능이 켜져 있고 활성화되어 있는지 확인하세요.</div></div>
+          <div class="gt-item"><span class="gt-ico">🔋</span><div><b>절전 · 비행기 모드 해제</b><br>절전 모드나 비행기 모드가 켜져 있으면 인식이 안 될 수 있어요.</div></div>
+          <div class="gt-item"><span class="gt-ico">📵</span><div><b>케이스 · 금속 제거</b><br>두꺼운 케이스, 금속 액세서리, 신용카드를 치워주세요.</div></div>
+          <div class="gt-item"><span class="gt-ico">🔓</span><div><b>잠금 해제 후 태그</b><br>화면 잠금을 풀고 화면이 켜진 상태에서 바로 태그하세요.</div></div>
+          <div class="gt-item"><span class="gt-ico">🩹</span><div><b>칩 손상 확인</b><br>카드가 심하게 휘거나 손상되지 않았는지 확인하세요.</div></div>
+          <div class="gt-item"><span class="gt-ico">📞</span><div><b>그래도 안 될 때</b><br>대표번호 010-9523-7116으로 문의 주시면 도와드립니다.</div></div>
+        </div>
+      </div>
+
+      <div class="guide-full-cta">
+        <a href="https://www.vvfystudio.com/NFCGuide" target="_blank" rel="noopener" class="btn btn-primary btn-lg">전체 NFC 가이드 보기 ↗</a>
+        <p>지원 기종 검색 · 기기별 상세 설정 가이드를 확인하세요.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Q&A -->
+  <section class="faq support-faq" id="qna">
+    <div class="section-head">
+      <span class="eyebrow">Q&amp;A · 자주 묻는 질문</span>
+      <h2>궁금한 점을 먼저 확인해보세요</h2>
+    </div>
+    <div id="faqList"></div>
+    <div class="support-faq-cta">
+      <p>원하는 답을 찾지 못하셨나요?</p>
+      <a href="index.html#contact" class="btn btn-primary btn-lg">제작 상담 문의하기</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 bigglz factory. All rights reserved.</span>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/bigglz_official" target="_blank" rel="noopener">IG</a>
+        <a href="https://bigglzfactory.com" target="_blank" rel="noopener">WEB</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ---------- 기기별 가이드 탭 ----------
+const guideTabs = document.getElementById('guideTabs');
+guideTabs.addEventListener('click', (e) => {
+  const btn = e.target.closest('.guide-tab');
+  if (!btn) return;
+  const tab = btn.dataset.tab;
+  guideTabs.querySelectorAll('.guide-tab').forEach(b => b.classList.toggle('active', b === btn));
+  document.querySelectorAll('.guide-panel').forEach(p => p.classList.toggle('active', p.dataset.panel === tab));
+});
+
+// ---------- Q&A 데이터 ----------
+const faqData = [
+  {
+    q: 'NFC 굿즈가 무엇인가요?',
+    a: '근거리 무선통신(NFC) 기술이 적용된 굿즈입니다. NFC 칩이 내장된 제품을 스마트폰으로 태그하면 원하는 디지털 콘텐츠로 바로 연결됩니다. 프로모션, 멤버십, 브랜드 캠페인, 이벤트 인증 등 다양하게 활용할 수 있습니다.'
+  },
+  {
+    q: '서비스를 이용하려면 전용 앱을 설치해야 하나요?',
+    a: '아닙니다. 앱 설치나 로그인 없이, 스마트폰을 카드에 태그하는 즉시 웹 브라우저로 콘텐츠가 열립니다. 사용자는 아무런 장벽 없이 브랜드가 준비한 콘텐츠에 바로 접속할 수 있습니다.'
+  },
+  {
+    q: '어떤 스마트폰에서도 인식이 잘 되나요?',
+    a: '아이폰(7 이상)과 안드로이드 등 NFC 기능이 탑재된 스마트폰이라면 별도 설정 없이 사용할 수 있습니다. 기기 환경에 관계없이 동일하고 매끄러운 경험을 지원합니다. 인식이 안 될 때는 위쪽 NFC 가이드의 문제 해결 방법을 확인해 주세요.'
+  },
+  {
+    q: 'QR 코드와 비교했을 때 NFC 카드만의 강점은 무엇인가요?',
+    a: '가장 큰 차이는 편의성과 경험의 독점성입니다. QR처럼 카메라를 켜고 초점을 맞출 필요 없이, 스마트폰을 카드에 태그하는 것만으로 콘텐츠가 즉시 실행됩니다. 실물 카드가 있는 사람만 콘텐츠를 볼 수 있어 브랜드의 희소 가치를 지키는 데 유리합니다.'
+  },
+  {
+    q: '굿즈 제작 이후에 연결된 콘텐츠를 바꿀 수 있나요?',
+    a: '네, 실물 굿즈를 다시 만들 필요 없이 수정 가능합니다. 연결된 링크나 AI 콘텐츠(영상·음성·챗봇 등)를 변경하면 이미 배포된 굿즈에도 반영됩니다. 이벤트 기간이나 브랜드 전략에 맞춰 유연하게 운영할 수 있습니다.'
+  },
+  {
+    q: 'NFC 굿즈를 만들고 싶은데, 어떤 내용을 준비해야 하나요?',
+    a: '정확한 기획이 없어도 괜찮습니다. 레퍼런스 이미지나 유사 제품만 있어도 상담이 가능합니다. 사용 목적, 예상 수량 및 예산, 희망 납기 일정을 미리 생각해두시면 보다 구체적인 상담이 가능합니다.'
+  },
+  {
+    q: '최소 제작 수량과 제작 기간이 궁금해요',
+    a: '제품 종류와 커스텀 사양에 따라 최소 제작 수량(MOQ)이 모두 다릅니다. 아크릴 키링 기준으로는 양산 확정일로부터 평균 3~4주가 소요되며, 굿즈 생산과 NFC 콘텐츠 개발이 동시에 진행됩니다. 원하시는 아이템을 공유해 주시면 정확히 안내드립니다.'
+  },
+  {
+    q: '가격대가 궁금해요',
+    a: '제품 종류·수량·커스텀 사양(포장, NFC 콘텐츠 연동 여부 등)에 따라 가격이 달라져 미리 정확한 금액을 안내드리기는 어렵습니다. 원하시는 제품과 대략적인 수량만 알려주시면 무료로 견적을 안내해드립니다.'
+  }
+];
+
+const faqList = document.getElementById('faqList');
+faqList.innerHTML = faqData.map((item, i) => `
+  <div class="faq-item${i === 0 ? ' open' : ''}">
+    <button type="button" class="faq-q">
+      <span>${item.q}</span>
+      <span class="plus">+</span>
+    </button>
+    <div class="faq-a"><p>${item.a}</p></div>
+  </div>
+`).join('');
+
+function setFaqHeight(item) {
+  const a = item.querySelector('.faq-a');
+  a.style.maxHeight = item.classList.contains('open') ? a.scrollHeight + 'px' : 0;
+}
+faqList.querySelectorAll('.faq-item').forEach(setFaqHeight);
+
+faqList.addEventListener('click', (e) => {
+  const q = e.target.closest('.faq-q');
+  if (!q) return;
+  const item = q.closest('.faq-item');
+  item.classList.toggle('open');
+  setFaqHeight(item);
+});
+</script>
+
+</body>
+</html>
