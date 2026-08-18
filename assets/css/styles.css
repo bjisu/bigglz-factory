@@ -438,7 +438,7 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   .stack-front { width: 260px; margin-left: -130px; }
   .floating-chip.c1 { left: 0; padding: 8px 12px; }
   .floating-chip.c2 { right: 0; padding: 8px 12px; }
-  .header-actions .btn-primary { padding: 10px 14px; font-size: 13px; }
+  .header-actions .btn-primary { display: none; }
   .value-grid, .nfc-grid, .contact-grid { grid-template-columns: 1fr; }
   .usecase-list { gap: 10px; }
   .usecase-item { font-size: 13px; padding: 10px 16px; }
