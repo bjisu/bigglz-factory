@@ -400,6 +400,8 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
 @media (max-width: 900px) {
   .nav-desktop, .header-actions .btn-kakao { display: none; }
   .menu-toggle { display: flex; flex-shrink: 0; }
+  /* 로고 클릭으로 홈 이동이 가능하므로 모바일에선 숨김 */
+  .header-actions .btn-home { display: none; }
 }
 @media (max-width: 780px) {
   body { padding-bottom: 64px; }
@@ -417,8 +419,8 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   .stack-back { width: 135px; }
   .stack-mid { width: 140px; }
   .stack-front { width: 260px; margin-left: -130px; }
-  .floating-chip.c1 { left: 0; font-size: 11px; padding: 8px 12px; }
-  .floating-chip.c2 { right: 0; font-size: 11px; padding: 8px 12px; }
+  .floating-chip.c1 { left: 0; padding: 8px 12px; }
+  .floating-chip.c2 { right: 0; padding: 8px 12px; }
   .header-actions .btn-primary { padding: 10px 14px; font-size: 13px; }
   .value-grid, .nfc-grid, .contact-grid { grid-template-columns: 1fr; }
   .usecase-list { gap: 10px; }
@@ -437,9 +439,31 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   .logo-track { gap: 16px; }
   .trust-stats { gap: 28px; }
   .hero { padding: 128px 0 70px; }
+
+  /* iOS 사파리는 16px 미만 입력창에 포커스하면 화면을 확대한다 */
+  .field input[type=text], .field input[type=tel], .field input[type=email],
+  .field input[type=date], .field input[type=file], .field select, .field textarea {
+    font-size: 16px;
+  }
+  .upload-box input[type=file] { font-size: 16px; }
+
+  /* 터치 영역 확보: 푸터 링크 44px, 소셜 아이콘 44x44 */
+  .footer-col a { padding: 12px 0; margin-bottom: 0; }
+  .footer-col span { margin-bottom: 14px; }
+  .footer-social { gap: 12px; }
+  .footer-social a { width: 44px; height: 44px; }
+
+  /* 모바일 최소 가독 크기 확보 */
+  .floating-chip.c1, .floating-chip.c2 { font-size: 12px; }
+  .pf-tag { font-size: 12px; }
+}
+@media (max-width: 480px) {
+  .pf-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 420px) {
   .logo { font-size: 17px; }
+  /* 회전된 stack-back 이 화면 밖으로 나가지 않도록 카드 스택 축소 */
+  .card-stack { width: 280px; height: 280px; }
 }
 
 /* ================= 회사소개 / 고객지원 서브페이지 ================= */

@@ -8,15 +8,6 @@ window.addEventListener('scroll', () => {
 });
 backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-// ---------- Mobile nav ----------
-const menuToggle = document.getElementById('menuToggle');
-const mobileNav = document.getElementById('mobileNav');
-menuToggle.addEventListener('click', () => {
-  mobileNav.classList.toggle('open');
-});
-mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
-
-
 // ---------- Partner logos (bigglzfactory.com Partners 섹션 실제 로고) ----------
 const PARTNER_LOGO_CDN = 'https://cdn.imweb.me/thumbnail/20251219/';
 const partnerLogoHashes = [

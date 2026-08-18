@@ -17,10 +17,18 @@
     </a>
     <div class="header-actions">
       <a href="tel:010-9523-7116" class="btn btn-kakao">카카오톡 문의</a>
-      <a href="index.html" class="btn btn-ghost">← 홈으로</a>
+      <a href="index.html" class="btn btn-ghost btn-home">← 홈으로</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="메뉴 열기"><span></span></button>
     </div>
   </div>
 </header>
+
+<nav class="mobile-nav" id="mobileNav">
+  <a href="https://bigglz.net/#mypage" target="_blank" rel="noopener" class="is-nfc">NFC 스마트 명함</a>
+  <a href="index.html#portfolio">포트폴리오</a>
+  <a href="support.html">고객지원</a>
+  <a href="about.html">회사소개</a>
+</nav>
 
 <main class="subpage">
 
@@ -173,5 +181,11 @@
   </div>
 </footer>
 
+<div class="sticky-cta" id="stickyCta">
+  <a href="tel:010-9523-7116" class="sticky-btn sticky-kakao">카카오톡 문의</a>
+  <a href="index.html#contact" class="sticky-btn sticky-primary">NFC 제작 문의</a>
+</div>
+
+<script src="assets/js/nav.js"></script>
 </body>
 </html>
