@@ -154,7 +154,7 @@ section { position: relative; }
 /* 카드는 손에 들려 떠 있음 → 그림자를 아래로 길고 옅게 */
 .stack-card { position: absolute; height: auto; border-radius: var(--r-md); box-shadow: 14px 36px 52px -14px rgba(20,20,40,.30); }
 /* 보조 카드: 메인 카드보다 바닥선을 ~27px 아래로 어긋나게 */
-.stack-back { width: calc(var(--card-w) * .88); left: calc(-20 * var(--u)); top: calc(100 * var(--u)); transform: rotate(9deg); z-index: 1; opacity: .9; }
+.stack-back { width: calc(var(--card-w) * .88); left: calc(-20 * var(--u)); top: calc(100 * var(--u)); transform: rotate(-9deg); z-index: 1; opacity: .9; }
 /* 카드: 공중에 들려 폰 상단(NFC 안테나)으로 다가감. 세로 중심 = 폰 높이 40% 지점, 아래 끝은 폰 아래 끝보다 26% 위.
    카드는 수직(회전 없음). 폰이 4deg 기울어 폰 왼쪽 변이 아래로 갈수록 카드에 가까워지므로 간격은 위에서 넉넉히 */
 .stack-front { width: var(--card-w); left: calc(32 * var(--u) - var(--gap)); top: calc(45 * var(--u)); transform: none; z-index: 4; animation: tagCard 4.8s ease-in-out infinite; }
