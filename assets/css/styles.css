@@ -161,8 +161,8 @@ section { position: relative; }
 .phone-mock {
   position: absolute; right: 0; top: calc(10 * var(--u)); width: var(--phone-w); height: auto; z-index: 2;
   filter: drop-shadow(12px 22px 18px rgba(20,20,40,.32));
-  /* 2D 기울임 없이 Y축으로만 살짝 비틀어(오른쪽으로 돌아선 정면) 입체감 — 베젤 수직선은 유지 */
-  transform: perspective(1400px) rotateY(10deg); transform-origin: 50% 50%;
+  /* 2D 기울임 없이 Y축으로만 살짝 비틀어(카드 쪽으로 돌아선 정면) 입체감 — 베젤 수직선은 유지 */
+  transform: perspective(1400px) rotateY(-10deg); transform-origin: 50% 50%;
 }
 /* 근접 그림자: 폰 왼쪽 테두리 안쪽에만 — 접근 지점(상단)에서 진하고 아래로 흐려짐. 폰 바깥으로 새지 않도록
    박스를 폰 영역(left = 폰 왼쪽, top = 폰 위쪽) 안에 가두고 그라디언트를 왼쪽 위에 붙인다. 폰(2)과 카드(4) 사이 */
