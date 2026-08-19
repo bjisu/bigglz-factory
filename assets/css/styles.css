@@ -143,23 +143,29 @@ section { position: relative; }
 .hero-visual { position: relative; display: flex; align-items: center; justify-content: center; }
 /* 태그 장면: 레오 카드가 폰 뒷면 상단(NFC 안테나)에 닿는 구도.
    --u 하나로 전체 장면을 비율 유지하며 축소한다 (브레이크포인트별로 --u만 바꿈) */
-.tag-scene { --u: 1px; position: relative; width: calc(520 * var(--u)); height: calc(540 * var(--u)); }
+.tag-scene {
+  --u: 1px;
+  --phone-w: calc(270 * var(--u));           /* 폰 폭 — 나머지는 전부 이 값 기준 */
+  --card-w: calc(var(--phone-w) * .845);      /* 카드 폭 = 폰 폭의 84.5% (높이 65%, 1:1.665) */
+  position: relative; width: calc(520 * var(--u)); height: calc(590 * var(--u));
+}
 .stack-card { position: absolute; height: auto; border-radius: var(--r-md); box-shadow: var(--shadow-lg); }
-.stack-back { width: calc(150 * var(--u)); left: calc(-6 * var(--u)); top: calc(150 * var(--u)); transform: rotate(-16deg); z-index: 1; opacity: .9; }
-.stack-front { width: calc(260 * var(--u)); left: calc(43 * var(--u)); top: calc(38 * var(--u)); transform: rotate(12deg); z-index: 3; animation: tagCard 3.6s ease-in-out infinite; }
+.stack-back { width: calc(var(--card-w) * .88); left: calc(-14 * var(--u)); top: calc(150 * var(--u)); transform: rotate(-14deg); z-index: 1; opacity: .9; }
+.stack-front { width: var(--card-w); left: calc(35 * var(--u)); top: calc(92 * var(--u)); transform: rotate(12deg); z-index: 3;
+  box-shadow: var(--shadow-lg), 10px 8px 22px -4px rgba(20,20,40,.28); /* 두 번째 그림자: 폰 위에 드리우는 접촉 그림자 */ animation: tagCard 3.6s ease-in-out infinite; }
 .phone-mock {
-  position: absolute; right: 0; top: calc(20 * var(--u)); width: calc(232 * var(--u)); height: auto; z-index: 2;
+  position: absolute; right: 0; top: calc(10 * var(--u)); width: var(--phone-w); height: auto; z-index: 2;
   filter: drop-shadow(0 28px 36px rgba(20,20,40,.35)); transform: rotate(6deg);
   animation: floatPhone 6s ease-in-out infinite;
 }
 /* 접점(카드 오른쪽 위 ↔ 폰 왼쪽 위)에서 퍼지는 NFC 링 */
-.tap-ping { position: absolute; width: calc(90 * var(--u)); height: calc(90 * var(--u)); left: calc(300 * var(--u)); top: calc(25 * var(--u)); border-radius: 50%; border: 2px solid rgba(0,116,228,.55); z-index: 4; pointer-events: none; animation: ping 3.6s ease-out infinite; }
+.tap-ping { position: absolute; width: calc(90 * var(--u)); height: calc(90 * var(--u)); left: calc(255 * var(--u)); top: calc(75 * var(--u)); border-radius: 50%; border: 2px solid rgba(0,116,228,.55); z-index: 4; pointer-events: none; animation: ping 3.6s ease-out infinite; }
 .floating-chip {
   position: absolute; background: var(--surface-1); border-radius: var(--r-sm); padding: 10px 14px; display: flex; align-items: center; gap: 8px;
   box-shadow: var(--shadow-sm); font-size: 13px; font-weight: 700; z-index: 5; white-space: nowrap;
 }
-.floating-chip.c1 { top: calc(-6 * var(--u)); left: calc(170 * var(--u)); animation: floatChip 5s ease-in-out infinite; }
-.floating-chip.c2 { bottom: calc(-2 * var(--u)); right: calc(-16 * var(--u)); animation: floatChip 5.5s ease-in-out infinite reverse; }
+.floating-chip.c1 { top: calc(30 * var(--u)); left: calc(140 * var(--u)); animation: floatChip 5s ease-in-out infinite; }
+.floating-chip.c2 { bottom: calc(6 * var(--u)); right: calc(-16 * var(--u)); animation: floatChip 5.5s ease-in-out infinite reverse; }
 .floating-chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--nfc); }
 
 /* 카드가 폰 쪽으로 미세하게 다가갔다 돌아옴(50%에서 가장 가까움) — 링은 그 순간 퍼진다 */
