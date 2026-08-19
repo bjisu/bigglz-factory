@@ -148,22 +148,10 @@ section { position: relative; }
 .stack-back { width: calc(150 * var(--u)); left: calc(-6 * var(--u)); top: calc(150 * var(--u)); transform: rotate(-16deg); z-index: 1; opacity: .9; }
 .stack-front { width: calc(260 * var(--u)); left: calc(43 * var(--u)); top: calc(38 * var(--u)); transform: rotate(12deg); z-index: 3; animation: tagCard 3.6s ease-in-out infinite; }
 .phone-mock {
-  position: absolute; right: 0; top: calc(20 * var(--u)); width: calc(232 * var(--u)); aspect-ratio: 9 / 19.5; border-radius: calc(34 * var(--u));
-  background: #14141c; padding: calc(9 * var(--u)); box-shadow: var(--shadow-lg); transform: rotate(6deg); z-index: 2;
+  position: absolute; right: 0; top: calc(20 * var(--u)); width: calc(232 * var(--u)); height: auto; z-index: 2;
+  filter: drop-shadow(0 28px 36px rgba(20,20,40,.35)); transform: rotate(6deg);
   animation: floatPhone 6s ease-in-out infinite;
 }
-.phone-mock::before { content: ''; position: absolute; top: calc(18 * var(--u)); left: 50%; transform: translateX(-50%); width: calc(72 * var(--u)); height: calc(20 * var(--u)); border-radius: 999px; background: #14141c; z-index: 3; }
-.phone-screen { width: 100%; height: 100%; border-radius: calc(26 * var(--u)); overflow: hidden; background: #fff; position: relative; display: flex; flex-direction: column; }
-.ps-hero { position: relative; flex: 0 0 55%; overflow: hidden; }
-.ps-hero img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
-.ps-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,12,24,0) 40%, rgba(10,12,24,.55)); }
-.ps-sheet { flex: 1; padding: calc(14 * var(--u)) calc(14 * var(--u)) calc(10 * var(--u)); display: flex; flex-direction: column; gap: calc(8 * var(--u)); min-height: 0; overflow: hidden; }
-.ps-title { font-size: max(11px, calc(13 * var(--u))); font-weight: 800; letter-spacing: -.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.ps-menu { display: flex; flex-direction: column; gap: calc(6 * var(--u)); }
-.ps-menu li { display: flex; align-items: center; gap: calc(8 * var(--u)); padding: calc(6 * var(--u)) calc(8 * var(--u)); border: 1px solid var(--gray-100); border-radius: calc(10 * var(--u)); font-size: max(10px, calc(11 * var(--u))); font-weight: 700; color: var(--gray-700); }
-.ps-menu i { width: calc(22 * var(--u)); height: calc(22 * var(--u)); flex-shrink: 0; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--nfc)); display: flex; align-items: center; justify-content: center; font-style: normal; font-size: calc(11 * var(--u)); }
-.ps-menu span { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.ps-menu em { font-style: normal; color: var(--gray-500); font-size: calc(14 * var(--u)); }
 /* 접점(카드 오른쪽 위 ↔ 폰 왼쪽 위)에서 퍼지는 NFC 링 */
 .tap-ping { position: absolute; width: calc(90 * var(--u)); height: calc(90 * var(--u)); left: calc(300 * var(--u)); top: calc(25 * var(--u)); border-radius: 50%; border: 2px solid rgba(0,116,228,.55); z-index: 4; pointer-events: none; animation: ping 3.6s ease-out infinite; }
 .floating-chip {
@@ -417,7 +405,6 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   .header-actions { gap: 8px; }
   /* 폰 180px */
   .tag-scene { --u: .776px; }
-  .ps-menu li:nth-child(3) { display: none; }
   .floating-chip { padding: 8px 12px; }
   .header-actions .btn-primary { display: none; }
   .value-grid, .contact-grid { grid-template-columns: 1fr; }
@@ -454,10 +441,8 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
 }
 @media (max-width: 420px) {
   .logo { font-size: 17px; }
-  /* 폰 150px — 화면 안 글자가 안 읽히므로 시트는 제목만 */
+  /* 폰 150px */
   .tag-scene { --u: .646px; }
-  .ps-menu { display: none; }
-  .ps-sheet { justify-content: center; }
 }
 /* 320px 대에서는 컨테이너 내부 폭이 272px 뿐 */
 @media (max-width: 359px) {
