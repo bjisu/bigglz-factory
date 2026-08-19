@@ -180,16 +180,12 @@ section { position: relative; }
   -webkit-mask-image: linear-gradient(180deg, transparent 8%, #000 30%, #000 70%, transparent 92%);
   mask-image: linear-gradient(180deg, transparent 8%, #000 30%, #000 70%, transparent 92%);
 }
-/* 태그 칩: 카드 오른쪽 위 모서리 바로 위, 폰 왼쪽 — 카드·폰 콘텐츠를 가리지 않으면서 접점 쪽을 가리킴 */
-.tag-chip {
-  position: absolute; z-index: 6; left: calc(var(--phone-x) - 128px); top: calc(var(--phone-y) + var(--phone-h) / 2 - var(--card-h) / 2 - 48px);
-  background: var(--surface-1); border-radius: var(--r-sm); padding: 8px 12px; display: flex; align-items: center; gap: 7px;
-  box-shadow: var(--shadow-sm); font-size: 12.5px; font-weight: 700; white-space: nowrap;
-}
-.tag-chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--nfc); }
 /* NFC 파동: 카드 모서리 쪽에 중심을 두고 폰 방향으로 퍼지는 동심원 3겹 */
-/* 접점 = (폰 왼쪽 테두리 + overlap, 폰 세로 중앙). 카드(4) 위에 그려짐 */
-.tap-waves { position: absolute; left: calc(var(--phone-x) + var(--overlap)); top: calc(var(--phone-y) + var(--phone-h) / 2); width: 0; height: 0; z-index: 5; pointer-events: none; }
+/* 파동 중심 = 카드 오른쪽 위 모서리 (rotate(-5deg) 반영: cos5=.9962, sin5=.0872). 카드(4) 위에 그려짐 */
+.tap-waves {
+  position: absolute;
+  left: calc(var(--phone-x) + var(--overlap) - var(--card-w) / 2 + var(--card-w) * .4981 - var(--card-h) * .0436);
+  top: calc(var(--phone-y) + var(--phone-h) / 2 - var(--card-w) * .0436 - var(--card-h) * .4981); width: 0; height: 0; z-index: 5; pointer-events: none; }
 .tap-waves span {
   position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; margin: -22px 0 0 -22px;
   border-radius: 50%; border: 2.5px solid var(--nfc); opacity: 0; /* 선만 — 그림자·글로우 없음 */
@@ -483,7 +479,6 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   /* 폰 150px — 보조 카드 숨겨 접근 지점만 남김 */
   .tag-scene { --u: .646px; --overlap: calc(var(--phone-w) * .08); }
   .stack-back { display: none; }
-  .tag-chip { font-size: 11.5px; padding: 6px 10px; }
 }
 /* 320px 대에서는 컨테이너 내부 폭이 272px 뿐 */
 @media (max-width: 359px) {
