@@ -181,13 +181,6 @@ section { position: relative; }
 .tap-waves span:nth-child(3) { animation-delay: 2.3s; }
 /* B안(옵션): .tap-waves.is-arc — 오른쪽으로 열린 호, NFC 아이콘처럼 방향성. 기본은 A안(완전한 원) */
 .tap-waves.is-arc span { border-color: transparent var(--nfc) transparent transparent; }
-.floating-chip {
-  position: absolute; background: var(--surface-1); border-radius: var(--r-sm); padding: 10px 14px; display: flex; align-items: center; gap: 8px;
-  box-shadow: var(--shadow-sm); font-size: 13px; font-weight: 700; z-index: 6; white-space: nowrap;
-}
-.floating-chip.c1 { top: calc(-14 * var(--u)); left: calc(78 * var(--u)); animation: floatChip 5s ease-in-out infinite; }
-.floating-chip.c2 { bottom: calc(6 * var(--u)); right: calc(-16 * var(--u)); animation: floatChip 5.5s ease-in-out infinite reverse; }
-.floating-chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--nfc); }
 
 /* 카드가 폰 쪽으로 미세하게 다가갔다 돌아옴(50%에서 가장 가까움) — 링은 그 순간 퍼진다 */
 /* 4.8s 한 주기에 탭 2회(25%·75%: 폰 쪽 오른쪽 위로 5px) + 그 사이 살짝 가라앉는 부유(50%: 아래 3px) */
@@ -196,7 +189,6 @@ section { position: relative; }
   25%,75% { transform: rotate(-3deg) translate(4px,-3px); }
   50%     { transform: rotate(-3deg) translate(0,3px); }
 }
-@keyframes floatChip { 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-8px);} }
 @keyframes tapWave { 0% { transform: scale(.45); opacity: .8; } 70% { opacity: .18; } 100% { transform: scale(2.8); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) {
   .card-stack *, .phone-mock, .tap-waves span { animation: none !important; }
@@ -438,7 +430,6 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   /* 폰 180px, 간격 8~12px, 파동 32px */
   .tag-scene { --u: .776px; --gap: 15px; }
   .tap-waves span { width: 32px; height: 32px; margin: -16px 0 0 -16px; }
-  .floating-chip { padding: 8px 12px; }
   .header-actions .btn-primary { display: none; }
   .value-grid, .contact-grid { grid-template-columns: 1fr; }
   .pf-grid { grid-template-columns: repeat(2, 1fr); }
@@ -465,9 +456,6 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   .footer-col span { margin-bottom: 14px; }
   .footer-social { gap: 12px; }
   .footer-social a { width: 44px; height: 44px; }
-
-  /* 모바일 최소 가독 크기 확보 */
-  .floating-chip.c1, .floating-chip.c2 { font-size: 12px; }
 }
 @media (max-width: 480px) {
   .pf-grid { grid-template-columns: 1fr; }
