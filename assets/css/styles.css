@@ -151,10 +151,13 @@ section { position: relative; }
   position: relative; width: calc(520 * var(--u)); height: calc(600 * var(--u));
 }
 /* 장면 공통 광원: 왼쪽 위 → 그림자는 오른쪽 아래로 (회전값과 무관하게 방향 통일) */
-.stack-card { position: absolute; height: auto; border-radius: var(--r-md); box-shadow: 12px 22px 40px -12px rgba(20,20,40,.35); }
-.stack-back { width: calc(var(--card-w) * .88); left: calc(-20 * var(--u)); top: calc(190 * var(--u)); transform: rotate(-12deg); z-index: 1; opacity: .9; }
-/* 카드: 폰 왼쪽 아래에서 위쪽 1/3 지점(NFC 안테나)으로 다가감. rotate(-3deg)라 오른쪽 위 모서리가 가장 가까운 점이고 아래로 갈수록 살짝 멀어짐 */
-.stack-front { width: var(--card-w); left: calc(35 * var(--u) - var(--gap)); top: calc(204 * var(--u)); transform: rotate(-3deg); z-index: 4; animation: tagCard 2.4s ease-in-out infinite; }
+/* 카드는 손에 들려 떠 있음 → 그림자를 아래로 길고 옅게 */
+.stack-card { position: absolute; height: auto; border-radius: var(--r-md); box-shadow: 14px 36px 52px -14px rgba(20,20,40,.30); }
+/* 보조 카드: 메인 카드보다 바닥선을 ~27px 아래로 어긋나게 */
+.stack-back { width: calc(var(--card-w) * .88); left: calc(-20 * var(--u)); top: calc(100 * var(--u)); transform: rotate(-12deg); z-index: 1; opacity: .9; }
+/* 카드: 공중에 들려 폰 상단(NFC 안테나)으로 다가감. 세로 중심 = 폰 높이 40% 지점, 아래 끝은 폰 아래 끝보다 26% 위.
+   rotate(-3deg)라 오른쪽 위 모서리가 가장 가까운 점 */
+.stack-front { width: var(--card-w); left: calc(32 * var(--u) - var(--gap)); top: calc(45 * var(--u)); transform: rotate(-3deg); z-index: 4; animation: tagCard 4.8s ease-in-out infinite; }
 .phone-mock {
   position: absolute; right: 0; top: calc(10 * var(--u)); width: var(--phone-w); height: auto; z-index: 2;
   filter: drop-shadow(12px 22px 18px rgba(20,20,40,.32)); /* 폰은 정면 정투상 — 회전·모션 없음(고정 기준) */
@@ -162,11 +165,11 @@ section { position: relative; }
 /* 근접 그림자: 접근 지점에서 가장 진하고 아래·바깥으로 흐려짐. 폰(2)과 카드(4) 사이 */
 .tap-shadow {
   position: absolute; z-index: 3; pointer-events: none; mix-blend-mode: multiply;
-  width: calc(110 * var(--u)); height: calc(260 * var(--u)); left: calc(200 * var(--u)); top: calc(110 * var(--u));
-  background: radial-gradient(ellipse 50% 45% at 45% 32%, rgba(20,20,40,.30), rgba(20,20,40,.10) 55%, transparent 75%);
+  width: calc(110 * var(--u)); height: calc(240 * var(--u)); left: calc(200 * var(--u)); top: calc(-20 * var(--u));
+  background: radial-gradient(ellipse 50% 45% at 45% 28%, rgba(20,20,40,.30), rgba(20,20,40,.10) 55%, transparent 75%);
 }
 /* NFC 파동: 카드 모서리 쪽에 중심을 두고 폰 방향으로 퍼지는 동심원 3겹 */
-.tap-waves { position: absolute; left: calc(238 * var(--u)); top: calc(196 * var(--u)); width: 0; height: 0; z-index: 5; pointer-events: none; }
+.tap-waves { position: absolute; left: calc(238 * var(--u)); top: calc(42 * var(--u)); width: 0; height: 0; z-index: 5; pointer-events: none; }
 .tap-waves span {
   position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; margin: -22px 0 0 -22px;
   border-radius: 50%; border: 2.5px solid var(--nfc); box-shadow: 0 0 6px rgba(46,151,255,.55), inset 0 0 6px rgba(46,151,255,.35); opacity: 0;
@@ -180,13 +183,17 @@ section { position: relative; }
   position: absolute; background: var(--surface-1); border-radius: var(--r-sm); padding: 10px 14px; display: flex; align-items: center; gap: 8px;
   box-shadow: var(--shadow-sm); font-size: 13px; font-weight: 700; z-index: 6; white-space: nowrap;
 }
-.floating-chip.c1 { top: calc(146 * var(--u)); left: calc(74 * var(--u)); animation: floatChip 5s ease-in-out infinite; }
+.floating-chip.c1 { top: calc(-14 * var(--u)); left: calc(78 * var(--u)); animation: floatChip 5s ease-in-out infinite; }
 .floating-chip.c2 { bottom: calc(6 * var(--u)); right: calc(-16 * var(--u)); animation: floatChip 5.5s ease-in-out infinite reverse; }
 .floating-chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--nfc); }
 
 /* 카드가 폰 쪽으로 미세하게 다가갔다 돌아옴(50%에서 가장 가까움) — 링은 그 순간 퍼진다 */
-/* 카드가 폰 쪽(오른쪽 위)으로 5px 다가갔다 돌아옴 — 50%가 최근접 */
-@keyframes tagCard { 0%,100%{ transform: rotate(-3deg) translate(0,0);} 50%{ transform: rotate(-3deg) translate(4px,-3px);} }
+/* 4.8s 한 주기에 탭 2회(25%·75%: 폰 쪽 오른쪽 위로 5px) + 그 사이 살짝 가라앉는 부유(50%: 아래 3px) */
+@keyframes tagCard {
+  0%,100% { transform: rotate(-3deg) translate(0,0); }
+  25%,75% { transform: rotate(-3deg) translate(4px,-3px); }
+  50%     { transform: rotate(-3deg) translate(0,3px); }
+}
 @keyframes floatChip { 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-8px);} }
 @keyframes tapWave { 0% { transform: scale(.45); opacity: .8; } 70% { opacity: .18; } 100% { transform: scale(2.8); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) {
