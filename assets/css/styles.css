@@ -147,17 +147,17 @@ section { position: relative; }
   --u: 1px;
   --phone-w: calc(270 * var(--u));           /* 폰 폭 — 나머지는 전부 이 값 기준 */
   --card-w: calc(var(--phone-w) * .845);      /* 카드 폭 = 폰 폭의 84.5% (높이 65%, 1:1.665) */
-  --gap: calc(26 * var(--u));                 /* 카드 오른쪽 위 모서리 ↔ 폰 왼쪽 테두리 간격 */
+  --gap: calc(27 * var(--u));                 /* 카드 오른쪽 위 모서리 ↔ 폰 왼쪽 테두리 간격 */
   position: relative; width: calc(520 * var(--u)); height: calc(600 * var(--u));
 }
 /* 장면 공통 광원: 왼쪽 위 → 그림자는 오른쪽 아래로 (회전값과 무관하게 방향 통일) */
 /* 카드는 손에 들려 떠 있음 → 그림자를 아래로 길고 옅게 */
 .stack-card { position: absolute; height: auto; border-radius: var(--r-md); box-shadow: 14px 36px 52px -14px rgba(20,20,40,.30); }
 /* 보조 카드: 메인 카드보다 바닥선을 ~27px 아래로 어긋나게 */
-.stack-back { width: calc(var(--card-w) * .88); left: calc(-20 * var(--u)); top: calc(100 * var(--u)); transform: rotate(11deg); z-index: 1; opacity: .9; }
+.stack-back { width: calc(var(--card-w) * .88); left: calc(-20 * var(--u)); top: calc(100 * var(--u)); transform: rotate(9deg); z-index: 1; opacity: .9; }
 /* 카드: 공중에 들려 폰 상단(NFC 안테나)으로 다가감. 세로 중심 = 폰 높이 40% 지점, 아래 끝은 폰 아래 끝보다 26% 위.
-   rotate(3deg) — 폰(4deg)과 같은 시계방향이라 두 변이 평행, 오른쪽 위 모서리가 가장 가까운 점 */
-.stack-front { width: var(--card-w); left: calc(32 * var(--u) - var(--gap)); top: calc(45 * var(--u)); transform: rotate(3deg); z-index: 4; animation: tagCard 4.8s ease-in-out infinite; }
+   카드는 수직(회전 없음). 폰이 4deg 기울어 폰 왼쪽 변이 아래로 갈수록 카드에 가까워지므로 간격은 위에서 넉넉히 */
+.stack-front { width: var(--card-w); left: calc(32 * var(--u) - var(--gap)); top: calc(45 * var(--u)); transform: none; z-index: 4; animation: tagCard 4.8s ease-in-out infinite; }
 .phone-mock {
   position: absolute; right: 0; top: calc(10 * var(--u)); width: var(--phone-w); height: auto; z-index: 2;
   filter: drop-shadow(12px 22px 18px rgba(20,20,40,.32));
@@ -173,7 +173,7 @@ section { position: relative; }
   background: radial-gradient(ellipse 34% 22% at 4% 7%, rgba(20,20,40,.28), rgba(20,20,40,.10) 50%, transparent 72%);
 }
 /* NFC 파동: 카드 모서리 쪽에 중심을 두고 폰 방향으로 퍼지는 동심원 3겹 */
-.tap-waves { position: absolute; left: calc(252 * var(--u)); top: calc(54 * var(--u)); width: 0; height: 0; z-index: 5; pointer-events: none; }
+.tap-waves { position: absolute; left: calc(240 * var(--u)); top: calc(46 * var(--u)); width: 0; height: 0; z-index: 5; pointer-events: none; }
 .tap-waves span {
   position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; margin: -22px 0 0 -22px;
   border-radius: 50%; border: 2.5px solid var(--nfc); opacity: 0; /* 선만 — 그림자·글로우 없음 */
@@ -187,9 +187,9 @@ section { position: relative; }
 /* 카드가 폰 쪽으로 미세하게 다가갔다 돌아옴(50%에서 가장 가까움) — 링은 그 순간 퍼진다 */
 /* 4.8s 한 주기에 탭 2회(25%·75%: 폰 쪽 오른쪽 위로 5px) + 그 사이 살짝 가라앉는 부유(50%: 아래 3px) */
 @keyframes tagCard {
-  0%,100% { transform: rotate(3deg) translate(0,0); }
-  25%,75% { transform: rotate(3deg) translate(4px,-3px); }
-  50%     { transform: rotate(3deg) translate(0,3px); }
+  0%,100% { transform: translate(0,0); }
+  25%,75% { transform: translate(4px,-3px); }
+  50%     { transform: translate(0,3px); }
 }
 @keyframes tapWave { 0% { transform: scale(.45); opacity: .8; } 70% { opacity: .18; } 100% { transform: scale(2.8); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) {
@@ -430,7 +430,7 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   .sticky-primary { background: linear-gradient(120deg, var(--brand), var(--nfc)); color: #fff; }
   .header-actions { gap: 8px; }
   /* 폰 180px, 간격 8~12px, 파동 32px */
-  .tag-scene { --u: .776px; --gap: 20px; }
+  .tag-scene { --u: .776px; --gap: 21px; }
   .tap-waves span { width: 32px; height: 32px; margin: -16px 0 0 -16px; }
   .header-actions .btn-primary { display: none; }
   .value-grid, .contact-grid { grid-template-columns: 1fr; }
@@ -465,7 +465,7 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
 @media (max-width: 420px) {
   .logo { font-size: 17px; }
   /* 폰 150px — 보조 카드 숨겨 접근 지점만 남김 */
-  .tag-scene { --u: .646px; --gap: 17px; }
+  .tag-scene { --u: .646px; --gap: 18px; }
   .stack-back { display: none; }
 }
 /* 320px 대에서는 컨테이너 내부 폭이 272px 뿐 */
