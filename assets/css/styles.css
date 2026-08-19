@@ -147,35 +147,51 @@ section { position: relative; }
   --u: 1px;
   --phone-w: calc(270 * var(--u));           /* 폰 폭 — 나머지는 전부 이 값 기준 */
   --card-w: calc(var(--phone-w) * .845);      /* 카드 폭 = 폰 폭의 84.5% (높이 65%, 1:1.665) */
-  position: relative; width: calc(520 * var(--u)); height: calc(590 * var(--u));
+  --gap: calc(21 * var(--u));                 /* 카드 오른쪽 위 모서리 ↔ 폰 왼쪽 테두리 간격 */
+  position: relative; width: calc(520 * var(--u)); height: calc(600 * var(--u));
 }
 /* 장면 공통 광원: 왼쪽 위 → 그림자는 오른쪽 아래로 (회전값과 무관하게 방향 통일) */
 .stack-card { position: absolute; height: auto; border-radius: var(--r-md); box-shadow: 12px 22px 40px -12px rgba(20,20,40,.35); }
-.stack-back { width: calc(var(--card-w) * .88); left: calc(-14 * var(--u)); top: calc(150 * var(--u)); transform: rotate(-13deg); z-index: 1; opacity: .9; }
-.stack-front { width: var(--card-w); left: calc(51 * var(--u)); top: calc(109 * var(--u)); transform: rotate(-5deg); z-index: 3;
-  box-shadow: 12px 22px 40px -12px rgba(20,20,40,.35), 8px 8px 18px -4px rgba(20,20,40,.25); /* 두 번째: 폰 위에 드리우는 접촉 그림자 */ animation: tagCard 3.6s ease-in-out infinite; }
+.stack-back { width: calc(var(--card-w) * .88); left: calc(-20 * var(--u)); top: calc(190 * var(--u)); transform: rotate(-12deg); z-index: 1; opacity: .9; }
+/* 카드: 폰 왼쪽 아래에서 위쪽 1/3 지점(NFC 안테나)으로 다가감. rotate(-3deg)라 오른쪽 위 모서리가 가장 가까운 점이고 아래로 갈수록 살짝 멀어짐 */
+.stack-front { width: var(--card-w); left: calc(35 * var(--u) - var(--gap)); top: calc(204 * var(--u)); transform: rotate(-3deg); z-index: 4; animation: tagCard 2.4s ease-in-out infinite; }
 .phone-mock {
   position: absolute; right: 0; top: calc(10 * var(--u)); width: var(--phone-w); height: auto; z-index: 2;
-  filter: drop-shadow(12px 22px 18px rgba(20,20,40,.32)); /* 폰은 정면 정투상 — 회전 없음(수직 기준) */
-  animation: floatPhone 6s ease-in-out infinite;
+  filter: drop-shadow(12px 22px 18px rgba(20,20,40,.32)); /* 폰은 정면 정투상 — 회전·모션 없음(고정 기준) */
 }
-/* 접점(카드 오른쪽 위 ↔ 폰 왼쪽 위)에서 퍼지는 NFC 링 */
-.tap-ping { position: absolute; width: calc(90 * var(--u)); height: calc(90 * var(--u)); left: calc(217 * var(--u)); top: calc(55 * var(--u)); border-radius: 50%; border: 2px solid rgba(0,116,228,.55); z-index: 4; pointer-events: none; animation: ping 3.6s ease-out infinite; }
+/* 근접 그림자: 접근 지점에서 가장 진하고 아래·바깥으로 흐려짐. 폰(2)과 카드(4) 사이 */
+.tap-shadow {
+  position: absolute; z-index: 3; pointer-events: none; mix-blend-mode: multiply;
+  width: calc(110 * var(--u)); height: calc(260 * var(--u)); left: calc(200 * var(--u)); top: calc(110 * var(--u));
+  background: radial-gradient(ellipse 50% 45% at 45% 32%, rgba(20,20,40,.30), rgba(20,20,40,.10) 55%, transparent 75%);
+}
+/* NFC 파동: 카드 모서리 쪽에 중심을 두고 폰 방향으로 퍼지는 동심원 3겹 */
+.tap-waves { position: absolute; left: calc(238 * var(--u)); top: calc(196 * var(--u)); width: 0; height: 0; z-index: 5; pointer-events: none; }
+.tap-waves span {
+  position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; margin: -22px 0 0 -22px;
+  border-radius: 50%; border: 2.5px solid var(--nfc); box-shadow: 0 0 6px rgba(46,151,255,.55), inset 0 0 6px rgba(46,151,255,.35); opacity: 0;
+  animation: tapWave 2.4s ease-out infinite; animation-delay: 1.2s; /* 카드가 가장 가까운 순간(50%)에 첫 파동 */
+}
+.tap-waves span:nth-child(2) { animation-delay: 1.75s; }
+.tap-waves span:nth-child(3) { animation-delay: 2.3s; }
+/* B안(옵션): .tap-waves.is-arc — 오른쪽으로 열린 호, NFC 아이콘처럼 방향성. 기본은 A안(완전한 원) */
+.tap-waves.is-arc span { border-color: transparent var(--nfc) transparent transparent; }
 .floating-chip {
   position: absolute; background: var(--surface-1); border-radius: var(--r-sm); padding: 10px 14px; display: flex; align-items: center; gap: 8px;
-  box-shadow: var(--shadow-sm); font-size: 13px; font-weight: 700; z-index: 5; white-space: nowrap;
+  box-shadow: var(--shadow-sm); font-size: 13px; font-weight: 700; z-index: 6; white-space: nowrap;
 }
-.floating-chip.c1 { top: calc(34 * var(--u)); left: calc(86 * var(--u)); animation: floatChip 5s ease-in-out infinite; }
+.floating-chip.c1 { top: calc(146 * var(--u)); left: calc(74 * var(--u)); animation: floatChip 5s ease-in-out infinite; }
 .floating-chip.c2 { bottom: calc(6 * var(--u)); right: calc(-16 * var(--u)); animation: floatChip 5.5s ease-in-out infinite reverse; }
 .floating-chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--nfc); }
 
 /* 카드가 폰 쪽으로 미세하게 다가갔다 돌아옴(50%에서 가장 가까움) — 링은 그 순간 퍼진다 */
-@keyframes tagCard { 0%,100%{ transform: rotate(-5deg) translate(0,0);} 50%{ transform: rotate(-5deg) translate(4px,-4px);} }
-@keyframes floatPhone { 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-4px);} }
+/* 카드가 폰 쪽(오른쪽 위)으로 5px 다가갔다 돌아옴 — 50%가 최근접 */
+@keyframes tagCard { 0%,100%{ transform: rotate(-3deg) translate(0,0);} 50%{ transform: rotate(-3deg) translate(4px,-3px);} }
 @keyframes floatChip { 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-8px);} }
-@keyframes ping { 0%,40%{ transform: scale(.55); opacity: 0 } 50%{ transform: scale(.7); opacity: .9 } 100%{ transform: scale(1.35); opacity: 0 } }
+@keyframes tapWave { 0% { transform: scale(.45); opacity: .8; } 70% { opacity: .18; } 100% { transform: scale(2.8); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) {
-  .card-stack *, .phone-mock, .tap-ping { animation: none !important; }
+  .card-stack *, .phone-mock, .tap-waves span { animation: none !important; }
+  .tap-waves span:first-child { opacity: .3; transform: scale(2.2); } /* 파동은 가장 큰 상태 하나만 정적으로 */
 }
 
 /* ---------- Trust bar ---------- */
@@ -410,8 +426,9 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   .sticky-kakao { background: #FEE500; color: #191919; }
   .sticky-primary { background: linear-gradient(120deg, var(--brand), var(--nfc)); color: #fff; }
   .header-actions { gap: 8px; }
-  /* 폰 180px */
-  .tag-scene { --u: .776px; }
+  /* 폰 180px, 간격 8~12px, 파동 32px */
+  .tag-scene { --u: .776px; --gap: 15px; }
+  .tap-waves span { width: 32px; height: 32px; margin: -16px 0 0 -16px; }
   .floating-chip { padding: 8px 12px; }
   .header-actions .btn-primary { display: none; }
   .value-grid, .contact-grid { grid-template-columns: 1fr; }
@@ -448,8 +465,9 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
 }
 @media (max-width: 420px) {
   .logo { font-size: 17px; }
-  /* 폰 150px */
-  .tag-scene { --u: .646px; }
+  /* 폰 150px — 보조 카드 숨겨 접근 지점만 남김 */
+  .tag-scene { --u: .646px; --gap: 13px; }
+  .stack-back { display: none; }
 }
 /* 320px 대에서는 컨테이너 내부 폭이 272px 뿐 */
 @media (max-width: 359px) {
