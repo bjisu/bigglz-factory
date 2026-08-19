@@ -147,7 +147,7 @@ section { position: relative; }
   --u: 1px;
   --phone-w: calc(270 * var(--u));           /* 폰 폭 — 나머지는 전부 이 값 기준 */
   --card-w: calc(var(--phone-w) * .845);      /* 카드 폭 = 폰 폭의 84.5% (높이 65%, 1:1.665) */
-  --gap: calc(21 * var(--u));                 /* 카드 오른쪽 위 모서리 ↔ 폰 왼쪽 테두리 간격 */
+  --gap: calc(38 * var(--u));                 /* 카드 오른쪽 위 모서리 ↔ 폰 왼쪽 테두리 간격 */
   position: relative; width: calc(520 * var(--u)); height: calc(600 * var(--u));
 }
 /* 장면 공통 광원: 왼쪽 위 → 그림자는 오른쪽 아래로 (회전값과 무관하게 방향 통일) */
@@ -161,8 +161,7 @@ section { position: relative; }
 .phone-mock {
   position: absolute; right: 0; top: calc(10 * var(--u)); width: var(--phone-w); height: auto; z-index: 2;
   filter: drop-shadow(12px 22px 18px rgba(20,20,40,.32));
-  /* 2D 기울임 없이 Y축으로만 살짝 비틀어(카드 쪽으로 돌아선 정면) 입체감 — 베젤 수직선은 유지 */
-  transform: perspective(1400px) rotateY(-10deg); transform-origin: 50% 50%;
+  transform: rotate(-4deg); /* 카드와 같은 방향(반시계)으로 살짝 — 반대면 V자가 됨 */
 }
 /* 근접 그림자: 폰 왼쪽 테두리 안쪽에만 — 접근 지점(상단)에서 진하고 아래로 흐려짐. 폰 바깥으로 새지 않도록
    박스를 폰 영역(left = 폰 왼쪽, top = 폰 위쪽) 안에 가두고 그라디언트를 왼쪽 위에 붙인다. 폰(2)과 카드(4) 사이 */
@@ -430,7 +429,7 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   .sticky-primary { background: linear-gradient(120deg, var(--brand), var(--nfc)); color: #fff; }
   .header-actions { gap: 8px; }
   /* 폰 180px, 간격 8~12px, 파동 32px */
-  .tag-scene { --u: .776px; --gap: 15px; }
+  .tag-scene { --u: .776px; --gap: 29px; }
   .tap-waves span { width: 32px; height: 32px; margin: -16px 0 0 -16px; }
   .header-actions .btn-primary { display: none; }
   .value-grid, .contact-grid { grid-template-columns: 1fr; }
@@ -465,7 +464,7 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
 @media (max-width: 420px) {
   .logo { font-size: 17px; }
   /* 폰 150px — 보조 카드 숨겨 접근 지점만 남김 */
-  .tag-scene { --u: .646px; --gap: 13px; }
+  .tag-scene { --u: .646px; --gap: 25px; }
   .stack-back { display: none; }
 }
 /* 320px 대에서는 컨테이너 내부 폭이 272px 뿐 */
