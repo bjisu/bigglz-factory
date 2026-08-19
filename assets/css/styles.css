@@ -140,35 +140,48 @@ section { position: relative; }
 .hero-stats div b { display: block; font-size: 22px; font-weight: 800; }
 .hero-stats div span { font-size: 13px; color: var(--gray-500); }
 
-.hero-visual { position: relative; display: flex; align-items: center; justify-content: center; min-height: 500px; }
-.card-stack { position: relative; width: 460px; height: 460px; }
-.stack-card { position: absolute; border-radius: var(--r-md); box-shadow: var(--shadow-lg); }
-.stack-back {
-  width: 210px; top: 0; left: 0; transform: rotate(-19deg);
-  z-index: 1; animation: floatCard 5s ease-in-out infinite;
+.hero-visual { position: relative; display: flex; align-items: center; justify-content: center; }
+/* 태그 장면: 레오 카드가 폰 뒷면 상단(NFC 안테나)에 닿는 구도.
+   --u 하나로 전체 장면을 비율 유지하며 축소한다 (브레이크포인트별로 --u만 바꿈) */
+.tag-scene { --u: 1px; position: relative; width: calc(520 * var(--u)); height: calc(540 * var(--u)); }
+.stack-card { position: absolute; height: auto; border-radius: var(--r-md); box-shadow: var(--shadow-lg); }
+.stack-back { width: calc(150 * var(--u)); left: calc(-6 * var(--u)); top: calc(150 * var(--u)); transform: rotate(-16deg); z-index: 1; opacity: .9; }
+.stack-front { width: calc(260 * var(--u)); left: calc(43 * var(--u)); top: calc(38 * var(--u)); transform: rotate(12deg); z-index: 3; animation: tagCard 3.6s ease-in-out infinite; }
+.phone-mock {
+  position: absolute; right: 0; top: calc(20 * var(--u)); width: calc(232 * var(--u)); aspect-ratio: 9 / 19.5; border-radius: calc(34 * var(--u));
+  background: #14141c; padding: calc(9 * var(--u)); box-shadow: var(--shadow-lg); transform: rotate(6deg); z-index: 2;
+  animation: floatPhone 6s ease-in-out infinite;
 }
-.stack-mid {
-  width: 220px; top: 10px; right: 0; transform: rotate(15deg);
-  z-index: 2; animation: floatCard3 5.6s ease-in-out infinite;
-}
-.stack-front {
-  width: 400px; bottom: 0; left: 50%; margin-left: -200px; transform: rotate(4deg);
-  z-index: 3; animation: floatCard2 4.5s ease-in-out infinite;
-}
-.tap-ping { position: absolute; width: 90px; height: 90px; border-radius: 50%; border: 2px solid rgba(0,116,228,.55); top: 2%; left: 6%; animation: ping 2.2s ease-out infinite; }
+.phone-mock::before { content: ''; position: absolute; top: calc(18 * var(--u)); left: 50%; transform: translateX(-50%); width: calc(72 * var(--u)); height: calc(20 * var(--u)); border-radius: 999px; background: #14141c; z-index: 3; }
+.phone-screen { width: 100%; height: 100%; border-radius: calc(26 * var(--u)); overflow: hidden; background: #fff; position: relative; display: flex; flex-direction: column; }
+.ps-hero { position: relative; flex: 0 0 55%; overflow: hidden; }
+.ps-hero img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.ps-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,12,24,0) 40%, rgba(10,12,24,.55)); }
+.ps-sheet { flex: 1; padding: calc(14 * var(--u)) calc(14 * var(--u)) calc(10 * var(--u)); display: flex; flex-direction: column; gap: calc(8 * var(--u)); min-height: 0; overflow: hidden; }
+.ps-title { font-size: max(11px, calc(13 * var(--u))); font-weight: 800; letter-spacing: -.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ps-menu { display: flex; flex-direction: column; gap: calc(6 * var(--u)); }
+.ps-menu li { display: flex; align-items: center; gap: calc(8 * var(--u)); padding: calc(6 * var(--u)) calc(8 * var(--u)); border: 1px solid var(--gray-100); border-radius: calc(10 * var(--u)); font-size: max(10px, calc(11 * var(--u))); font-weight: 700; color: var(--gray-700); }
+.ps-menu i { width: calc(22 * var(--u)); height: calc(22 * var(--u)); flex-shrink: 0; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--nfc)); display: flex; align-items: center; justify-content: center; font-style: normal; font-size: calc(11 * var(--u)); }
+.ps-menu span { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ps-menu em { font-style: normal; color: var(--gray-500); font-size: calc(14 * var(--u)); }
+/* 접점(카드 오른쪽 위 ↔ 폰 왼쪽 위)에서 퍼지는 NFC 링 */
+.tap-ping { position: absolute; width: calc(90 * var(--u)); height: calc(90 * var(--u)); left: calc(300 * var(--u)); top: calc(25 * var(--u)); border-radius: 50%; border: 2px solid rgba(0,116,228,.55); z-index: 4; pointer-events: none; animation: ping 3.6s ease-out infinite; }
 .floating-chip {
   position: absolute; background: var(--surface-1); border-radius: var(--r-sm); padding: 10px 14px; display: flex; align-items: center; gap: 8px;
-  box-shadow: var(--shadow-sm); font-size: 13px; font-weight: 700; z-index: 4;
+  box-shadow: var(--shadow-sm); font-size: 13px; font-weight: 700; z-index: 5; white-space: nowrap;
 }
-.floating-chip.c1 { top: -2%; left: -6%; animation: floatChip 5s ease-in-out infinite; }
-.floating-chip.c2 { bottom: 4%; right: -8%; animation: floatChip 5.5s ease-in-out infinite reverse; }
+.floating-chip.c1 { top: calc(-6 * var(--u)); left: calc(170 * var(--u)); animation: floatChip 5s ease-in-out infinite; }
+.floating-chip.c2 { bottom: calc(-2 * var(--u)); right: calc(-16 * var(--u)); animation: floatChip 5.5s ease-in-out infinite reverse; }
 .floating-chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--nfc); }
 
-@keyframes floatCard { 0%,100%{ transform: rotate(-19deg) translateY(0);} 50%{ transform: rotate(-15deg) translateY(-12px);} }
-@keyframes floatCard2 { 0%,100%{ transform: rotate(4deg) translateY(0);} 50%{ transform: rotate(1deg) translateY(-14px);} }
-@keyframes floatCard3 { 0%,100%{ transform: rotate(15deg) translateY(0);} 50%{ transform: rotate(11deg) translateY(-10px);} }
-@keyframes floatChip { 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-12px);} }
-@keyframes ping { 0%{ transform: scale(1); opacity:.9 } 100%{ transform: scale(1.12); opacity:0 } }
+/* 카드가 폰 쪽으로 미세하게 다가갔다 돌아옴(50%에서 가장 가까움) — 링은 그 순간 퍼진다 */
+@keyframes tagCard { 0%,100%{ transform: rotate(12deg) translate(0,0);} 50%{ transform: rotate(12deg) translate(4px,-4px);} }
+@keyframes floatPhone { 0%,100%{ transform: rotate(6deg) translateY(0);} 50%{ transform: rotate(6deg) translateY(-4px);} }
+@keyframes floatChip { 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-8px);} }
+@keyframes ping { 0%,40%{ transform: scale(.55); opacity: 0 } 50%{ transform: scale(.7); opacity: .9 } 100%{ transform: scale(1.35); opacity: 0 } }
+@media (prefers-reduced-motion: reduce) {
+  .card-stack *, .phone-mock, .tap-ping { animation: none !important; }
+}
 
 /* ---------- Trust bar ---------- */
 .trust-bar { padding: 48px 0; background: var(--surface-2); }
@@ -366,23 +379,13 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
 .sticky-cta { display: none; }
 
 /* ---------- Responsive ---------- */
-/* .container 가 1180px 로 고정되기 전에는 좌우 여백이 24px 뿐이라,
-   .floating-chip 의 음수 % 오프셋이 화면 밖으로 나가 잘린다 */
-@media (max-width: 1240px) {
-  .floating-chip.c1 { left: 0; }
-  .floating-chip.c2 { right: 0; }
-}
-/* 이 구간은 히어로가 2열이라 컬럼이 460px 카드 스택보다 좁다.
-   rotate 된 .stack-mid 의 바운딩 박스까지 겹쳐 화면 밖으로 나가므로 한 단계 축소한다 */
+/* 1025~1240px: 히어로가 2열이라 오른쪽 컬럼이 520px 장면보다 좁다 → 장면 축소 */
 @media (min-width: 1025px) and (max-width: 1240px) {
-  .card-stack { width: 400px; height: 400px; }
-  .stack-back { width: 185px; }
-  .stack-mid { width: 195px; }
-  .stack-front { width: 350px; margin-left: -175px; }
+  .tag-scene { --u: .85px; }
 }
 @media (max-width: 1024px) {
   .hero .container { grid-template-columns: 1fr; }
-  .hero-visual { order: -1; margin-bottom: 20px; min-height: 340px; }
+  .hero-visual { order: -1; margin-bottom: 20px; }
   .value-grid { grid-template-columns: 1fr 1fr; }
   .contact-grid { grid-template-columns: repeat(2, 1fr); }
   .pf-grid { grid-template-columns: repeat(3, 1fr); }
@@ -412,12 +415,10 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   .sticky-kakao { background: #FEE500; color: #191919; }
   .sticky-primary { background: linear-gradient(120deg, var(--brand), var(--nfc)); color: #fff; }
   .header-actions { gap: 8px; }
-  .card-stack { width: 300px; height: 300px; }
-  .stack-back { width: 135px; }
-  .stack-mid { width: 140px; }
-  .stack-front { width: 260px; margin-left: -130px; }
-  .floating-chip.c1 { left: 0; padding: 8px 12px; }
-  .floating-chip.c2 { right: 0; padding: 8px 12px; }
+  /* 폰 180px */
+  .tag-scene { --u: .776px; }
+  .ps-menu li:nth-child(3) { display: none; }
+  .floating-chip { padding: 8px 12px; }
   .header-actions .btn-primary { display: none; }
   .value-grid, .contact-grid { grid-template-columns: 1fr; }
   .pf-grid { grid-template-columns: repeat(2, 1fr); }
@@ -453,15 +454,14 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
 }
 @media (max-width: 420px) {
   .logo { font-size: 17px; }
-  /* 회전된 stack-back 이 화면 밖으로 나가지 않도록 카드 스택 축소 */
-  .card-stack { width: 280px; height: 280px; }
+  /* 폰 150px — 화면 안 글자가 안 읽히므로 시트는 제목만 */
+  .tag-scene { --u: .646px; }
+  .ps-menu { display: none; }
+  .ps-sheet { justify-content: center; }
 }
-/* 320px 대에서는 컨테이너 내부 폭이 272px 뿐이라 280px 스택이 들어가지 않는다 */
+/* 320px 대에서는 컨테이너 내부 폭이 272px 뿐 */
 @media (max-width: 359px) {
-  .card-stack { width: 230px; height: 230px; }
-  .stack-back { width: 110px; }
-  .stack-mid { width: 115px; }
-  .stack-front { width: 210px; margin-left: -105px; }
+  .tag-scene { --u: .52px; }
 }
 
 /* ================= 회사소개 / 고객지원 서브페이지 ================= */
