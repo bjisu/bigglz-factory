@@ -209,7 +209,8 @@ section { position: relative; }
 
 /* ---------- Trust bar ---------- */
 .trust-bar { padding: 48px 0; background: var(--surface-2); }
-.trust-label { text-align: center; font-size: 12.5px; font-weight: 700; color: var(--gray-500); letter-spacing: .03em; margin-bottom: 20px; }
+/* 14px/gray-700: 96px 로고 칩과의 위계·배경 대비 확보. 한글이라 자간 0. 라벨 키운 만큼 아래 여백 26px */
+.trust-label { text-align: center; font-size: 14px; font-weight: 700; color: var(--gray-700); letter-spacing: 0; margin-bottom: 26px; }
 .logo-marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
 .logo-track { display: flex; align-items: center; gap: 24px; width: max-content; animation: marquee 40s linear infinite; }
 .logo-chip {
@@ -428,6 +429,7 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   .section-pad { padding: var(--pad-section-m) 0; }
   .section-head { margin-bottom: 32px; }
   .trust-bar { padding: 36px 0; }
+  .trust-label { font-size: 13px; margin-bottom: 20px; }
   .hero { padding: 128px 0 var(--pad-section-m); }
   .back-to-top { bottom: 84px; width: 42px; height: 42px; }
   .sticky-cta {
