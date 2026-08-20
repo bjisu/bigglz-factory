@@ -301,12 +301,12 @@ body.pf-locked { overflow: hidden; }
 
 /* ---------- Process ---------- */
 .process { background: var(--surface-2); }
-.process-track { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.process-track { display: grid; grid-template-columns: repeat(5, 1fr); grid-auto-rows: 1fr; gap: 18px; }
 .process-step { background: var(--surface-1); border-radius: var(--r-md); padding: 26px 18px; text-align: center; position: relative; border: 1px solid var(--surface-line); }
-.process-step .badge { width: 40px; height: 40px; margin: 0 auto 14px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--nfc)); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; }
+/* line-height 1: body 1.55 상속 시 줄 상자 기준 정렬로 숫자가 위로 뜸. tabular-nums: 01~05 폭 통일 */
+.process-step .badge { width: 40px; height: 40px; margin: 0 auto 14px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--nfc)); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; line-height: 1; font-variant-numeric: tabular-nums; }
 .process-step h4 { font-size: 15px; font-weight: 800; }
-.process-step p { margin-top: 8px; font-size: 12.5px; color: var(--gray-500); }
-.process-step:not(:last-child)::after { content: ''; position: absolute; top: 39px; right: -18px; width: 20px; height: 2px; background: var(--gray-300); }
+.process-step p { margin-top: 8px; font-size: 13px; color: var(--gray-500); }
 
 
 
@@ -457,7 +457,6 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   .value-grid, .contact-grid { grid-template-columns: 1fr; }
   .pf-grid { grid-template-columns: repeat(2, 1fr); }
   .process-track { grid-template-columns: 1fr 1fr; }
-  .process-step:not(:last-child)::after { display: none; }
   .field-row, .pick-grid { grid-template-columns: 1fr 1fr; }
   .inquiry-form { padding: 28px 20px; }
   .footer-top { grid-template-columns: 1fr; }
@@ -553,7 +552,7 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
 .guide-panel.active { display: block; }
 .guide-steps { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
 .guide-step { flex: 1 1 200px; max-width: 240px; background: var(--surface-1); border: 1px solid var(--surface-line); border-radius: var(--r-md); padding: 28px 22px; text-align: center; }
-.guide-step .badge { width: 42px; height: 42px; margin: 0 auto 14px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--nfc)); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; }
+.guide-step .badge { width: 42px; height: 42px; margin: 0 auto 14px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--nfc)); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; line-height: 1; font-variant-numeric: tabular-nums; }
 .guide-step h4 { font-size: 15.5px; font-weight: 800; }
 .guide-step p { margin-top: 8px; font-size: 13.5px; color: var(--gray-500); }
 .guide-trouble { margin-top: 48px; background: var(--surface-1); border: 1px solid var(--surface-line); border-radius: var(--r-lg); padding: 40px 32px; }
