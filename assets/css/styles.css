@@ -575,3 +575,20 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   .gt-grid { grid-template-columns: 1fr; }
   .about-hero, .support-hero { padding-top: 112px; }
 }
+
+/* 데스크톱(>780px) 본문 가독성: 읽는 텍스트만 +1px. 모바일은 기존 크기 유지 */
+@media (min-width: 781px) {
+  .section-head p { font-size: 17px; }
+  .value-card p { font-size: 15.5px; }
+  .pf-body h4 { font-size: 15px; }
+  .process-step h4 { font-size: 16px; }
+  .process-step p { font-size: 14px; }
+  .faq-q { font-size: 17px; }
+  .faq-a p { font-size: 15.5px; }
+  .contact-card p { font-size: 15px; }
+  .pf-d-body p { font-size: 16px; }
+  .about-lead { font-size: 17px; }
+  .guide-step h4 { font-size: 16px; }
+  .guide-step p { font-size: 14.5px; }
+  .gt-item { font-size: 14.5px; }
+}
