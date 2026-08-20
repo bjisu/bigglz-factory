@@ -254,7 +254,8 @@ section { position: relative; }
 .pf-thumb img { width: 100%; height: 100%; object-fit: cover; }
 .pf-body { padding: 16px 16px 18px; }
 .pf-tag { display: inline-block; font-size: 12px; font-weight: 800; color: var(--nfc-dark); background: rgba(0,116,228,.09); padding: 4px 9px; border-radius: 999px; margin-bottom: 8px; }
-.pf-body h4 { font-size: 14px; font-weight: 700; line-height: 1.4; }
+/* 제목은 2줄까지, 넘치면 말줄임 — 카드 높이 어긋남 방지 (전체 제목은 상세 모달에서 노출) */
+.pf-body h4 { font-size: 14px; font-weight: 700; line-height: 1.4; min-height: 2.8em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; } /* min-height 2줄분 — 1줄 제목도 카드 높이 동일 */
 .pf-more { text-align: center; margin-top: 40px; }
 
 /* ---------- Portfolio detail modal (case study) ---------- */
@@ -474,7 +475,12 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   .footer-social a { width: 44px; height: 44px; }
 }
 @media (max-width: 480px) {
-  .pf-grid { grid-template-columns: 1fr; }
+  /* 2열 유지(780px 규칙), 카드 내부만 축소 */
+  .pf-grid { gap: 12px; }
+  .pf-card { border-radius: 14px; }
+  .pf-body { padding: 10px 10px 12px; }
+  .pf-tag { font-size: 11.5px; padding: 3px 8px; margin-bottom: 6px; }
+  .pf-body h4 { font-size: 13px; line-height: 1.35; min-height: 2.7em; }
   /* 이 폭에선 오른쪽 보정이 화면을 넘침 — 해제 */
   .tag-scene { left: 0; }
 }
@@ -485,6 +491,11 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   /* 뒤 카드가 숨어 균형점이 반대로 → 왼쪽으로 보정 */
   .tag-scene { left: calc(-14 * var(--u)); }
   .stack-back { display: none; }
+}
+@media (max-width: 360px) {
+  .pf-grid { gap: 10px; }
+  .pf-body { padding: 9px 9px 11px; }
+  .pf-body h4 { font-size: 12.5px; }
 }
 /* 320px 대에서는 컨테이너 내부 폭이 272px 뿐 */
 @media (max-width: 359px) {
