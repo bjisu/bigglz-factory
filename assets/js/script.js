@@ -249,9 +249,9 @@ const faqData = [
 const faqList = document.getElementById('faqList');
 faqList.innerHTML = faqData.map((item, i) => `
   <div class="faq-item${i === 0 ? ' open' : ''}">
-    <button type="button" class="faq-q">
+    <button type="button" class="faq-q" aria-expanded="${i === 0 ? 'true' : 'false'}">
       <span>${item.q}</span>
-      <span class="plus">+</span>
+      <span class="plus" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
     </button>
     <div class="faq-a"><p>${item.a}</p></div>
   </div>
@@ -267,6 +267,7 @@ faqList.addEventListener('click', (e) => {
   const q = e.target.closest('.faq-q');
   if (!q) return;
   const item = q.closest('.faq-item');
-  item.classList.toggle('open');
+  const open = item.classList.toggle('open');
+  q.setAttribute('aria-expanded', open);
   setFaqHeight(item);
 });
