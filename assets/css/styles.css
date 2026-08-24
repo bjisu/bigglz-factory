@@ -344,9 +344,11 @@ body.pf-locked { overflow: hidden; }
 .event-cta { display: flex; gap: 12px; justify-content: center; margin-top: 44px; flex-wrap: wrap; }
 
 /* ---------- Inquiry form (goods inquiry) ---------- */
-.inquiry { background: linear-gradient(180deg, var(--surface-1), var(--surface-2)); }
+.inquiry { background: var(--surface-2); }
 .inquiry-head { text-align: center; max-width: 620px; margin: 0 auto 20px; }
 .inquiry-head .eyebrow { background: rgba(0,116,228,.08); color: var(--brand); }
+.inquiry-head h2 { font-size: clamp(24px, 3vw, 32px); font-weight: 800; }
+.inquiry-head p { margin-top: 12px; color: var(--gray-500); }
 
 .inquiry-form { max-width: 760px; margin: 0 auto; background: var(--surface-1); border-radius: var(--r-lg); padding: 44px; box-shadow: var(--shadow-lg); border: 1px solid var(--surface-line); }
 .form-section { padding-top: 32px; margin-top: 24px; border-top: 1px solid var(--gray-100); }
@@ -370,13 +372,19 @@ body.pf-locked { overflow: hidden; }
 .pick {
   border: 1.5px solid var(--gray-300); border-radius: var(--r-sm); padding: 16px 12px; text-align: center; font-size: 13.5px; font-weight: 700;
   position: relative; transition: border-color .15s ease, background .15s ease;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 54px;
 }
 .pick:hover { border-color: var(--nfc); }
 .pick.selected { border-color: var(--nfc); background: rgba(0,116,228,.06); color: var(--nfc-dark); }
+.pick.selected::after {
+  content: '✓'; position: absolute; top: 8px; left: 8px; width: 18px; height: 18px; border-radius: 50%;
+  background: var(--nfc); color: #fff; font-size: 11px; font-weight: 800; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+}
 .pick .star { position: absolute; top: -10px; right: -8px; background: var(--nfc); color: #fff; font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 999px; z-index: 2; }
 .pick small { display: block; margin-top: 4px; font-weight: 500; color: var(--gray-500); font-size: 12px; }
 
-#hardwarePick .pick { display: flex; align-items: center; justify-content: center; min-height: 54px; }
+#goodsPick .pick { min-height: 84px; }
 
 .upload-box { border: 1.5px dashed var(--gray-300); border-radius: var(--r-sm); padding: 26px; text-align: center; font-size: 13.5px; color: var(--gray-500); cursor: pointer; }
 .upload-box:hover { border-color: var(--nfc); color: var(--nfc-dark); }
@@ -484,6 +492,8 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   .footer-social a { width: 44px; height: 44px; }
 }
 @media (max-width: 480px) {
+  /* 전화번호·이메일은 길어서 2열에선 앞부분이 안 보임 */
+  .field-row { grid-template-columns: 1fr; }
   /* 2열 유지(780px 규칙), 카드 내부만 축소 */
   .pf-grid { gap: 12px; }
   .pf-card { border-radius: 14px; }
