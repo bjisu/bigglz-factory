@@ -56,7 +56,7 @@ input, select, textarea { font-family: inherit; }
 
 .container { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
 section { position: relative; }
-#portfolio, #process, #faq, #inquiry, #goods-entry, #contact, #event { scroll-margin-top: 88px; }
+#portfolio, #process, #faq, #goods-entry, #contact, #event { scroll-margin-top: 88px; }
 
 .eyebrow {
   display: inline-flex; align-items: center; gap: 6px;
@@ -191,8 +191,6 @@ section { position: relative; }
 }
 .tap-waves span:nth-child(2) { animation-delay: 1.75s; }
 .tap-waves span:nth-child(3) { animation-delay: 2.3s; }
-/* B안(옵션): .tap-waves.is-arc — 오른쪽으로 열린 호, NFC 아이콘처럼 방향성. 기본은 A안(완전한 원) */
-.tap-waves.is-arc span { border-color: transparent var(--nfc) transparent transparent; }
 
 /* 카드가 폰 쪽으로 미세하게 다가갔다 돌아옴(50%에서 가장 가까움) — 링은 그 순간 퍼진다 */
 /* 4.8s 한 주기에 탭 2회(25%·75%: 폰 쪽 오른쪽 위로 5px) + 그 사이 살짝 가라앉는 부유(50%: 아래 3px) */
@@ -378,7 +376,6 @@ body.pf-locked { overflow: hidden; }
 .pick .star { position: absolute; top: -10px; right: -8px; background: var(--nfc); color: #fff; font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 999px; z-index: 2; }
 .pick small { display: block; margin-top: 4px; font-weight: 500; color: var(--gray-500); font-size: 12px; }
 
-.pick-hint { font-size: 12px; color: var(--gray-500); margin-top: 10px; }
 #hardwarePick .pick { display: flex; align-items: center; justify-content: center; min-height: 54px; }
 
 .upload-box { border: 1.5px dashed var(--gray-300); border-radius: var(--r-sm); padding: 26px; text-align: center; font-size: 13.5px; color: var(--gray-500); cursor: pointer; }
