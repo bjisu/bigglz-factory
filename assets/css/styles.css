@@ -576,8 +576,6 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
 .gt-item .gt-ico { font-size: 22px; flex-shrink: 0; line-height: 1.2; }
 .gt-item .gt-ico svg { width: 22px; height: 22px; display: block; color: var(--brand); }
 .gt-item b { color: var(--ink); }
-.guide-full-cta { text-align: center; margin-top: 40px; }
-.guide-full-cta p { margin-top: 14px; font-size: 13.5px; color: var(--gray-500); }
 .support-faq { background: var(--surface-2); }
 .support-faq-cta { text-align: center; margin-top: 44px; }
 .support-faq-cta p { color: var(--gray-500); font-size: 15px; margin-bottom: 16px; }
