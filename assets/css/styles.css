@@ -548,15 +548,16 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
 .about-bizinfo { margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.12); font-size: 12.5px; color: rgba(255,255,255,.55); line-height: 1.75; }
 
 /* --- 고객지원 --- */
-.support-hero { padding: 132px 0 70px; background: radial-gradient(1000px 460px at 80% -10%, rgba(0,116,228,.10), transparent 60%); }
-.support-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 760px; margin: 8px auto 0; }
-.support-nav-card { display: flex; flex-direction: column; text-align: center; background: var(--surface-1); border: 1px solid var(--surface-line); border-radius: var(--r-md); padding: 32px 28px; transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease; }
+.support-hero { padding: 132px 0 72px; background: radial-gradient(1000px 460px at 80% -10%, rgba(0,116,228,.10), transparent 60%); }
+.support-entry { background: var(--surface-2); }
+.support-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 760px; margin: 0 auto; }
+.support-nav-card { display: flex; flex-direction: column; text-align: center; background: var(--surface-1); border: 1px solid var(--surface-line); border-radius: var(--r-md); padding: 30px 28px; transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease; }
 .support-nav-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--nfc); }
-.support-nav-card h3 { font-size: 19px; font-weight: 800; }
+.support-nav-card h3 { font-size: 18px; font-weight: 800; }
 .support-nav-card p { margin-top: 10px; font-size: 14px; color: var(--gray-500); flex-grow: 1; }
 .support-nav-card .cc-go { display: block; margin-top: 18px; font-size: 13.5px; font-weight: 800; color: var(--nfc-dark); }
 
-.nfc-guide { background: var(--surface-2); }
+.nfc-guide { background: var(--surface-1); }
 .guide-tabs { display: flex; gap: 10px; justify-content: center; margin-bottom: 36px; }
 .guide-tab { padding: 12px 26px; border-radius: 999px; border: 1.5px solid var(--gray-300); background: var(--surface-1); font-weight: 700; font-size: 15px; color: var(--gray-700); transition: .15s; }
 .guide-tab.active { background: var(--ink); color: #fff; border-color: var(--ink); }
@@ -577,6 +578,7 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
 .gt-item b { color: var(--ink); }
 .guide-full-cta { text-align: center; margin-top: 40px; }
 .guide-full-cta p { margin-top: 14px; font-size: 13.5px; color: var(--gray-500); }
+.support-faq { background: var(--surface-2); }
 .support-faq-cta { text-align: center; margin-top: 44px; }
 .support-faq-cta p { color: var(--gray-500); font-size: 15px; margin-bottom: 16px; }
 
@@ -596,7 +598,7 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   .pf-body h4 { font-size: 15px; }
   .process-step h4 { font-size: 16px; }
   .process-step p { font-size: 14px; }
-  .contact-card p { font-size: 15px; }
+  .contact-card p, .support-nav-card p { font-size: 15px; }
   .pf-d-body p { font-size: 16px; }
   .about-lead { font-size: 17px; }
   .guide-step h4 { font-size: 16px; }
