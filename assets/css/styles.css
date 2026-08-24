@@ -103,6 +103,10 @@ section { position: relative; }
 .nav-desktop a.is-nfc:hover { color: var(--nfc-dark); }
 .header-actions { display: flex; align-items: center; gap: 14px; }
 .header-actions .btn { padding: 11px 20px; font-size: 14px; }
+/* 오른쪽 버튼 문구가 페이지마다 달라(NFC 제작 문의 / ← 홈으로) 폭이 어긋나면
+   페이지를 옮길 때 내비게이션 전체가 좌우로 밀린다 — 둘의 폭을 맞춰 고정한다 */
+.header-actions .btn-primary,
+.header-actions .btn-home { min-width: 124px; }
 .header-actions .btn-primary,
 .mobile-nav .btn-primary {
   box-shadow: none;
