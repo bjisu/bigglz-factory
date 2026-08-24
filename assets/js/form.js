@@ -31,6 +31,17 @@ document.getElementById('designFile').addEventListener('change', (e) => {
   document.getElementById('uploadFilename').textContent = f ? `선택됨: ${f.name}` : '';
 });
 
+// 필요 시점 — 지난 날짜는 선택 불가. 정적 사이트라 min을 마크업에 박으면 하루만 지나도 낡으므로 실행 시점에 계산한다.
+const needDate = document.getElementById('needDate');
+const setNeedDateMin = () => {
+  const d = new Date();
+  const pad = (n) => String(n).padStart(2, '0');
+  // toISOString()은 UTC라 한국 시간대에선 자정 무렵 하루가 밀린다 — 로컬 날짜로 조립
+  needDate.min = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+};
+setNeedDateMin();
+needDate.addEventListener('focus', setNeedDateMin);  // 페이지를 열어둔 채 자정을 넘긴 경우
+
 function buildSummary() {
   const val = (id) => document.getElementById(id).value.trim();
   const selected = (gridId) => [...document.querySelectorAll(`#${gridId} .pick.selected`)].map(p => p.dataset.value).join(', ') || '-';
@@ -67,6 +78,11 @@ form.addEventListener('submit', (e) => {
   }
   if (!document.querySelector('#qtyPick .pick.selected')) {
     document.getElementById('qtyPick').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+  if (needDate.value && needDate.value < needDate.min) {
+    needDate.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    needDate.focus();
     return;
   }
   const summary = buildSummary();
