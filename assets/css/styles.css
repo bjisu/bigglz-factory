@@ -379,6 +379,7 @@ body.pf-locked { overflow: hidden; }
 .pick small { display: block; margin-top: 4px; font-weight: 500; color: var(--gray-500); font-size: 12px; }
 
 .pick-hint { font-size: 12px; color: var(--gray-500); margin-top: 10px; }
+#hardwarePick .pick { display: flex; align-items: center; justify-content: center; min-height: 54px; }
 
 .upload-box { border: 1.5px dashed var(--gray-300); border-radius: var(--r-sm); padding: 26px; text-align: center; font-size: 13.5px; color: var(--gray-500); cursor: pointer; }
 .upload-box:hover { border-color: var(--nfc); color: var(--nfc-dark); }

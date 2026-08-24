@@ -2,18 +2,14 @@
 const form = document.getElementById('inquiryForm');
 
 // pick-grid single/multi select behavior
-['goodsPick', 'hardwarePick', 'qtyPick', 'contentPick', 'contentHasLinkPick', 'packPick'].forEach(id => {
+['goodsPick', 'hardwarePick', 'qtyPick', 'contentHasLinkPick', 'packPick'].forEach(id => {
   const grid = document.getElementById(id);
+  if (!grid) return;
   grid.addEventListener('click', (e) => {
     const pick = e.target.closest('.pick');
     if (!pick) return;
-    const isMulti = id === 'contentPick';
-    if (isMulti) {
-      pick.classList.toggle('selected');
-    } else {
-      [...grid.children].forEach(c => c.classList.remove('selected'));
-      pick.classList.add('selected');
-    }
+    [...grid.children].forEach(c => c.classList.remove('selected'));
+    pick.classList.add('selected');
   });
 });
 
@@ -49,7 +45,7 @@ function buildSummary() {
     `제작 굿즈: ${selected('goodsPick')}`,
     `키링고리(부자재): ${selected('hardwarePick')}`,
     `제작 수량: ${selected('qtyPick')}`,
-    `NFC 콘텐츠: ${val('contentLink') ? `직접 제공 링크 - ${val('contentLink')}` : selected('contentPick')}`,
+    `NFC 콘텐츠: ${val('contentLink') ? `직접 제공 링크 - ${val('contentLink')}` : (val('contentDesc') || '-')}`,
     `포장 여부: ${selected('packPick')}`,
     `필요 시점: ${val('needDate') || '-'}`,
     ``,
