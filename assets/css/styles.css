@@ -98,6 +98,7 @@ section { position: relative; }
 .nav-desktop { display: flex; align-items: center; gap: 44px; }
 .nav-desktop a { font-size: 15px; font-weight: 600; color: var(--gray-700); }
 .nav-desktop a:hover { color: var(--ink); }
+.nav-desktop a.is-current { color: var(--ink); font-weight: 800; }
 .nav-desktop a.is-nfc { color: var(--nfc); font-weight: 700; }
 .nav-desktop a.is-nfc:hover { color: var(--nfc-dark); }
 .header-actions { display: flex; align-items: center; gap: 14px; }
