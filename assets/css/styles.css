@@ -78,6 +78,10 @@ section { position: relative; }
   white-space: nowrap;
 }
 .btn:active { transform: translateY(1px); }
+/* 비활성 버튼에 hover 효과가 남으면 눌릴 것처럼 보인다 — 전부 끈다 */
+.btn:disabled,
+.btn[disabled] { opacity: .45; cursor: not-allowed; box-shadow: none; transform: none; filter: none; }
+.btn:disabled:hover { filter: none; box-shadow: none; }
 .btn-primary { background: linear-gradient(120deg, var(--brand), var(--nfc)); color: #fff; box-shadow: 0 10px 24px -8px rgba(0,116,228,.55); }
 .btn-primary:hover { box-shadow: 0 14px 30px -6px rgba(0,116,228,.6); }
 .btn-ghost { background: var(--surface-1); color: var(--ink); border: 1.5px solid var(--gray-300); }
@@ -390,6 +394,8 @@ body.pf-locked { overflow: hidden; }
 .upload-filename { margin-top: 8px; font-size: 13px; font-weight: 700; color: var(--ink); }
 
 .inquiry-form .btn-block { margin-top: 8px; }
+/* min-height로 자리를 잡아둬야 문구가 나타났다 사라질 때 버튼이 흔들리지 않는다 */
+.submit-hint { margin-top: 10px; text-align: center; font-size: 13px; color: var(--gray-500); min-height: 18px; }
 
 .form-success { display: none; text-align: center; padding: 30px 0; }
 .form-success.show { display: block; }

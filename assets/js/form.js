@@ -10,6 +10,7 @@ const form = document.getElementById('inquiryForm');
     if (!pick) return;
     [...grid.children].forEach(c => c.classList.remove('selected'));
     pick.classList.add('selected');
+    updateSubmitState();
   });
 });
 
@@ -41,6 +42,43 @@ const setNeedDateMin = () => {
 };
 setNeedDateMin();
 needDate.addEventListener('focus', setNeedDateMin);  // 페이지를 열어둔 채 자정을 넘긴 경우
+
+// ---------- 제출 버튼 활성화 조건 (필수 6개) ----------
+function getMissingFields() {
+  const missing = [];
+  const val = (id) => (document.getElementById(id)?.value || '').trim();
+  const hasPick = (gridId) => !!document.querySelector(`#${gridId} .pick.selected`);
+
+  if (!val('companyName')) missing.push('회사/브랜드명');
+  if (!val('managerName')) missing.push('담당자 성함');
+  if (!val('phone')) missing.push('연락처');
+  if (!val('email')) missing.push('이메일');
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val('email'))) missing.push('올바른 이메일 형식');
+  if (!hasPick('goodsPick')) missing.push('제작 굿즈');
+  if (!hasPick('qtyPick')) missing.push('제작 수량');
+
+  return missing;
+}
+
+function updateSubmitState() {
+  const btn = document.querySelector('#inquiryForm button[type="submit"]');
+  const hint = document.getElementById('submitHint');
+  if (!btn) return;
+
+  const missing = getMissingFields();
+  btn.disabled = missing.length > 0;
+
+  if (hint) {
+    hint.textContent = missing.length ? `아직 ${missing.join(', ')}이(가) 남았어요` : '';
+  }
+}
+
+['companyName', 'managerName', 'phone', 'email'].forEach((id) => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('input', updateSubmitState);
+});
+
+updateSubmitState();
 
 function buildSummary() {
   const val = (id) => document.getElementById(id).value.trim();
