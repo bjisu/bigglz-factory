@@ -518,9 +518,7 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   .pf-grid { gap: 10px; }
   .pf-body { padding: 9px 9px 11px; }
   .pf-body h4 { font-size: 12.5px; }
-}
-/* 320px 대에서는 컨테이너 내부 폭이 272px 뿐 */
-@media (max-width: 359px) {
+  /* 320px 대에서는 컨테이너 내부 폭이 272px 뿐 */
   .tag-scene { --u: .52px; }
 }
 
