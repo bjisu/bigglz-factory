@@ -481,7 +481,9 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
 .faq-cta-actions { display: flex; gap: 12px; justify-content: center; margin-top: 24px; flex-wrap: wrap; }
 /* btn-ghost는 1.5px 테두리가 있고 btn-primary는 없다 — 한 줄일 땐 flex stretch가
    가려주지만 480px에서 세로로 쌓이면 2px 차이가 드러난다. 투명 테두리로 맞춘다 */
-.faq-cta-actions .btn-primary { border: 1.5px solid transparent; }
+.faq-cta-actions .btn-primary { border: 1.5px solid transparent; box-shadow: none; }
+/* 그림자를 뺀 대신 헤더 버튼과 같은 방식으로 hover 반응을 남긴다 */
+.faq-cta-actions .btn-primary:hover { box-shadow: none; filter: brightness(1.06); }
 
 
 /* =========================================================
