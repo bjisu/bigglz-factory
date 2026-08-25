@@ -571,7 +571,7 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   .pf-grid { gap: 12px; }
   .pf-card { border-radius: 14px; }
   .pf-body { padding: 10px 10px 12px; }
-  .pf-tag { font-size: 11.5px; padding: 3px 8px; margin-bottom: 6px; }
+  .pf-tag { font-size: 12px; padding: 3px 8px; margin-bottom: 6px; }
   .pf-body h4 { font-size: 13px; line-height: 1.35; min-height: 2.7em; }
   /* 이 폭에선 오른쪽 보정이 화면을 넘침 — 해제 */
   .tag-scene { left: 0; }
