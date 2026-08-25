@@ -453,7 +453,6 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
 .support-nav-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--nfc); }
 .support-nav-card h3 { font-size: 18px; font-weight: 800; }
 .support-nav-card p { margin-top: 10px; font-size: 14px; color: var(--gray-500); flex-grow: 1; }
-.support-nav-card .cc-go { display: block; margin-top: 18px; font-size: 13.5px; font-weight: 800; color: var(--nfc-dark); }
 
 .nfc-guide { background: var(--surface-1); }
 .guide-tabs { display: flex; gap: 10px; justify-content: center; margin-bottom: 36px; }
