@@ -56,7 +56,7 @@ input, select, textarea { font-family: inherit; }
 
 .container { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
 section { position: relative; }
-#portfolio, #process, #faq, #goods-entry, #contact, #event, #nfc-guide, #qna { scroll-margin-top: 88px; }
+#portfolio, #process, #goods-entry, #contact, #event, #nfc-guide, #qna { scroll-margin-top: 88px; }
 
 .eyebrow {
   display: inline-flex; align-items: center; gap: 6px;
@@ -331,9 +331,11 @@ body.pf-locked { overflow: hidden; }
 .faq-a p { padding: 0 48px 22px 4px; color: var(--gray-700); font-size: 14px; line-height: 1.7; white-space: pre-line; }
 
 /* ---------- Contact hub (문의 종류 선택) ---------- */
-.contact-hub { background: var(--surface-2); }
+.contact-hub { background: var(--surface-1); }
 .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .contact-card { display: flex; flex-direction: column; align-items: center; text-align: center; background: var(--surface-1); border: 1px solid var(--surface-line); border-radius: var(--r-md); padding: 40px 28px; transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease; }
+/* 섹션이 흰색이라 기본 --surface-line 테두리로는 카드 경계가 안 보임 */
+.contact-hub .contact-card { border-color: var(--gray-300); }
 .contact-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--nfc); }
 .contact-card .cc-icon { width: 60px; height: 60px; border-radius: 50%; background: rgba(0,116,228,.09); color: var(--brand); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; transition: background .2s ease; }
 .contact-card .cc-icon svg { width: 26px; height: 26px; display: block; }
