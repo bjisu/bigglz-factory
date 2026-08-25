@@ -176,7 +176,7 @@ function openPfModal(item) {
       <div class="pf-d-cta">
         <h3>${pfClient(item)}처럼, 비슷한 경험을 원하시나요?</h3>
         <p>비글즈가 기획부터 굿즈 제작·콘텐츠까지 한 번에 완성해드립니다.</p>
-        <a href="goods.html" class="btn btn-primary btn-lg" data-close>NFC 제작 상담 문의하기</a>
+        <a href="goods.html" class="btn btn-primary btn-lg" data-close>NFC 제작 문의</a>
       </div>
     </div>
   `;
