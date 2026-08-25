@@ -407,15 +407,11 @@ body.pf-locked { overflow: hidden; }
 
 /* ---------- Footer ---------- */
 footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px; }
-.footer-top { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: 32px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.1); }
+.footer-top { display: block; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,.1); }
+.footer-brand { max-width: 560px; }
 .footer-brand img { height: 30px; margin-bottom: 14px; }
 .footer-brand p { font-size: 13px; line-height: 1.9; }
-.footer-col h5 { color: #fff; font-size: 14px; font-weight: 800; margin-bottom: 14px; }
-.footer-col a, .footer-col span { display: block; font-size: 13px; margin-bottom: 10px; }
-.footer-col a:hover { color: #fff; }
 .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 26px; font-size: 12.5px; flex-wrap: wrap; gap: 12px; }
-.footer-social { display: flex; gap: 14px; }
-.footer-social a { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; }
 
 .back-to-top { position: fixed; bottom: 28px; right: 28px; width: 48px; height: 48px; border-radius: 50%; background: var(--ink); color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 24px -10px rgba(20,20,28,.5); opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s ease; z-index: 150; }
 .back-to-top.show { opacity: 1; pointer-events: auto; }
@@ -437,7 +433,6 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   .contact-grid { grid-template-columns: repeat(2, 1fr); }
   .pf-grid { grid-template-columns: repeat(3, 1fr); }
   .process-track { grid-template-columns: repeat(5, 1fr); gap: 10px; }
-  .footer-top { grid-template-columns: 1fr 1fr; }
 }
 /* 헤더가 한 줄에 안 들어가는 폭부터 햄버거로 전환 */
 @media (max-width: 900px) {
@@ -474,8 +469,6 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   .process-track { grid-template-columns: 1fr 1fr; }
   .field-row, .pick-grid { grid-template-columns: 1fr 1fr; }
   .inquiry-form { padding: 28px 20px; }
-  .footer-top { grid-template-columns: 1fr; }
-  .footer-bottom { flex-direction: column; align-items: flex-start; }
   .logo-chip { width: 68px; height: 68px; padding: 11px; }
   .logo-track { gap: 16px; }
   .trust-stats { gap: 28px; }
@@ -489,10 +482,6 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   .upload-box input[type=file] { font-size: 16px; }
 
   /* 터치 영역 확보: 푸터 링크 44px, 소셜 아이콘 44x44 */
-  .footer-col a { padding: 12px 0; margin-bottom: 0; }
-  .footer-col span { margin-bottom: 14px; }
-  .footer-social { gap: 12px; }
-  .footer-social a { width: 44px; height: 44px; }
 }
 @media (max-width: 480px) {
   /* 전화번호·이메일은 길어서 2열에선 앞부분이 안 보임 */
@@ -549,7 +538,6 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
 .about-cta-box h3 { font-size: clamp(22px, 3vw, 30px); font-weight: 800; line-height: 1.35; }
 .about-cta-box > p { margin-top: 14px; color: rgba(255,255,255,.72); font-size: 16px; }
 .about-cta-box .event-cta { margin-top: 30px; }
-.about-bizinfo { margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.12); font-size: 12.5px; color: rgba(255,255,255,.55); line-height: 1.75; }
 
 /* --- 고객지원 --- */
 .support-hero { padding: 120px 0 40px; background: radial-gradient(1000px 460px at 80% -10%, rgba(0,116,228,.10), transparent 60%); }
