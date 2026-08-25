@@ -474,8 +474,14 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
 .gt-item .gt-ico svg { width: 22px; height: 22px; display: block; color: var(--brand); }
 .gt-item b { color: var(--ink); }
 .support-faq { background: var(--surface-2); }
-.support-faq-cta { text-align: center; margin-top: 44px; }
-.support-faq-cta p { color: var(--gray-500); font-size: 15px; margin-bottom: 16px; }
+/* 섹션이 --surface-2라 박스는 흰색 + 테두리로 띄운다 */
+.support-faq-cta { margin-top: 56px; padding: 44px 32px; border-radius: var(--r-lg); text-align: center; background: var(--surface-1); border: 1px solid var(--surface-line); }
+.support-faq-cta h3 { font-size: 20px; font-weight: 800; color: var(--nfc-dark); }
+.support-faq-cta p { margin-top: 12px; font-size: 15px; color: var(--gray-500); }
+.faq-cta-actions { display: flex; gap: 12px; justify-content: center; margin-top: 24px; flex-wrap: wrap; }
+/* btn-ghost는 1.5px 테두리가 있고 btn-primary는 없다 — 한 줄일 땐 flex stretch가
+   가려주지만 480px에서 세로로 쌓이면 2px 차이가 드러난다. 투명 테두리로 맞춘다 */
+.faq-cta-actions .btn-primary { border: 1.5px solid transparent; }
 
 
 /* =========================================================
@@ -554,6 +560,8 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   /* 터치 영역 확보: 푸터 링크 44px, 소셜 아이콘 44x44 */
 }
 @media (max-width: 480px) {
+  .support-faq-cta { padding: 32px 20px; }
+  .faq-cta-actions .btn { width: 100%; }
   /* 전화번호·이메일은 길어서 2열에선 앞부분이 안 보임 */
   .field-row { grid-template-columns: 1fr; }
   /* 2열 유지(780px 규칙), 카드 내부만 축소 */
