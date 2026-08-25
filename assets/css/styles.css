@@ -205,10 +205,6 @@ section { position: relative; }
   50%     { transform: rotate(-5deg) translate(0,3px); }
 }
 @keyframes tapWave { 0% { transform: scale(.45); opacity: .8; } 70% { opacity: .18; } 100% { transform: scale(2.8); opacity: 0; } }
-@media (prefers-reduced-motion: reduce) {
-  .card-stack *, .phone-mock, .tap-waves span { animation: none !important; }
-  .tap-waves span:first-child { opacity: .3; transform: scale(2.2); } /* 파동은 가장 큰 상태 하나만 정적으로 */
-}
 
 /* ---------- Trust bar ---------- */
 .trust-bar { padding: 48px 0; background: var(--surface-2); }
@@ -276,9 +272,6 @@ body.pf-locked { overflow: hidden; }
 .pf-modal-panel {
   position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: #fff;
   overflow-y: auto; -webkit-overflow-scrolling: touch; animation: pfUp .3s cubic-bezier(.2,.8,.2,1);
-}
-@media (min-width: 900px) {
-  .pf-modal-panel { top: 40px; bottom: 40px; left: 0; right: 0; width: min(920px, calc(100% - 48px)); margin: 0 auto; border-radius: var(--r-lg); box-shadow: 0 40px 90px -24px rgba(10,12,24,.55); }
 }
 @keyframes pfFade { from { opacity: 0; } to { opacity: 1; } }
 @keyframes pfUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
@@ -421,6 +414,82 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
 
 .sticky-cta { display: none; }
 
+
+/* ================= 회사소개 / 고객지원 서브페이지 ================= */
+.grad { background: linear-gradient(120deg, var(--brand), var(--nfc)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* --- 회사소개 --- */
+.about-hero { padding: 132px 0 80px; background: radial-gradient(1000px 460px at 80% -10%, rgba(0,116,228,.10), transparent 60%), radial-gradient(800px 460px at 5% 10%, rgba(0,116,228,.07), transparent 55%); }
+/* 리드 문단이 이 안에 있어 부모 폭(640px)에 갇힘 — 아래 .about-desc와 같은 720px로 */
+.about-hero .section-head { max-width: 720px; margin-bottom: 0; }
+.about-hero .about-lead { max-width: 720px; margin: 0 auto; text-align: center; font-size: 18px; color: var(--gray-700); }
+.about-hero .about-desc { max-width: 720px; margin: 20px auto 0; text-align: center; font-size: 15.5px; line-height: 1.75; color: var(--gray-500); }
+.about-stats { margin-top: 48px; }
+.about-news { background: var(--surface-2); }
+.news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.news-card { display: flex; flex-direction: column; background: var(--surface-1); border: 1px solid var(--surface-line); border-radius: var(--r-md); overflow: hidden; transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease; }
+.news-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--nfc); }
+.news-thumb { aspect-ratio: 16 / 9; background: var(--gray-100); overflow: hidden; }
+.news-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
+.news-card:hover .news-thumb img { transform: scale(1.05); }
+.news-body { display: flex; flex-direction: column; flex-grow: 1; padding: 22px 22px 24px; }
+.news-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.news-outlet { font-size: 12px; font-weight: 800; color: var(--nfc-dark); background: rgba(0,116,228,.08); padding: 4px 11px; border-radius: 999px; }
+.news-date { font-size: 12.5px; font-weight: 600; color: var(--gray-500); }
+.news-card h3 { font-size: 16px; font-weight: 800; line-height: 1.45; flex-grow: 1; }
+.news-go { margin-top: 18px; font-size: 13px; font-weight: 800; color: var(--nfc-dark); }
+.about-cta-box { background: var(--surface-dark); color: #fff; border-radius: var(--r-lg); padding: 60px 32px; text-align: center; }
+.about-cta-box h3 { font-size: clamp(22px, 3vw, 30px); font-weight: 800; line-height: 1.35; }
+.about-cta-box > p { margin-top: 14px; color: rgba(255,255,255,.72); font-size: 16px; }
+.about-cta-box .event-cta { margin-top: 30px; }
+
+/* --- 고객지원 --- */
+.support-hero { padding: 120px 0 40px; background: radial-gradient(1000px 460px at 80% -10%, rgba(0,116,228,.10), transparent 60%); }
+/* 전역 .section-head의 52px 하단 여백은 카드가 딸린 섹션용 — 여기선 히어로 padding이 그 역할을 한다 */
+.support-hero .section-head { margin-bottom: 0; }
+.support-entry { background: var(--surface-2); padding: 56px 0; }
+.support-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 860px; margin: 0 auto; }
+.support-nav-card { display: flex; flex-direction: column; text-align: center; background: var(--surface-1); border: 1px solid var(--surface-line); border-radius: var(--r-md); padding: 30px 28px; transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease; }
+.support-nav-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--nfc); }
+.support-nav-card h3 { font-size: 18px; font-weight: 800; }
+.support-nav-card p { margin-top: 10px; font-size: 14px; color: var(--gray-500); flex-grow: 1; }
+.support-nav-card .cc-go { display: block; margin-top: 18px; font-size: 13.5px; font-weight: 800; color: var(--nfc-dark); }
+
+.nfc-guide { background: var(--surface-1); }
+.guide-tabs { display: flex; gap: 10px; justify-content: center; margin-bottom: 36px; }
+.guide-tab { padding: 12px 26px; border-radius: 999px; border: 1.5px solid var(--gray-300); background: var(--surface-1); font-weight: 700; font-size: 15px; color: var(--gray-700); transition: .15s; }
+.guide-tab.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+.guide-panel { display: none; }
+.guide-panel.active { display: block; }
+.guide-steps { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+.guide-step { flex: 1 1 200px; max-width: 240px; background: var(--surface-1); border: 1px solid var(--surface-line); border-radius: var(--r-md); padding: 28px 22px; text-align: center; }
+.guide-step .badge { width: 42px; height: 42px; margin: 0 auto 14px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--nfc)); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; line-height: 1; font-variant-numeric: tabular-nums; }
+.guide-step h4 { font-size: 15.5px; font-weight: 800; }
+.guide-step p { margin-top: 8px; font-size: 13.5px; color: var(--gray-500); }
+.guide-trouble { margin-top: 48px; background: var(--surface-1); border: 1px solid var(--surface-line); border-radius: var(--r-lg); padding: 40px 32px; }
+.guide-trouble h3 { text-align: center; font-size: 20px; font-weight: 800; }
+.guide-trouble .gt-sub { text-align: center; margin-top: 8px; color: var(--gray-500); font-size: 14px; }
+.gt-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px 24px; margin-top: 30px; }
+.gt-item { display: flex; gap: 12px; font-size: 13.5px; line-height: 1.55; color: var(--gray-700); }
+.gt-item .gt-ico { font-size: 22px; flex-shrink: 0; line-height: 1.2; }
+.gt-item .gt-ico svg { width: 22px; height: 22px; display: block; color: var(--brand); }
+.gt-item b { color: var(--ink); }
+.support-faq { background: var(--surface-2); }
+.support-faq-cta { text-align: center; margin-top: 44px; }
+.support-faq-cta p { color: var(--gray-500); font-size: 15px; margin-bottom: 16px; }
+
+
+/* =========================================================
+   Responsive — 이 아래로 모든 미디어쿼리를 모아 둔다.
+   위쪽 일반 규칙보다 뒤에 있어야 폭별 재정의가 항상 이긴다.
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .card-stack *, .phone-mock, .tap-waves span { animation: none !important; }
+  .tap-waves span:first-child { opacity: .3; transform: scale(2.2); } /* 파동은 가장 큰 상태 하나만 정적으로 */
+}
+@media (min-width: 900px) {
+  .pf-modal-panel { top: 40px; bottom: 40px; left: 0; right: 0; width: min(920px, calc(100% - 48px)); margin: 0 auto; border-radius: var(--r-lg); box-shadow: 0 40px 90px -24px rgba(10,12,24,.55); }
+}
 /* ---------- Responsive ---------- */
 /* 1025~1240px: 히어로가 2열이라 오른쪽 컬럼이 520px 장면보다 좁다 → 장면 축소 */
 @media (min-width: 1025px) and (max-width: 1240px) {
@@ -512,70 +581,6 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   /* 320px 대에서는 컨테이너 내부 폭이 272px 뿐 */
   .tag-scene { --u: .52px; }
 }
-
-/* ================= 회사소개 / 고객지원 서브페이지 ================= */
-.grad { background: linear-gradient(120deg, var(--brand), var(--nfc)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-
-/* --- 회사소개 --- */
-.about-hero { padding: 132px 0 80px; background: radial-gradient(1000px 460px at 80% -10%, rgba(0,116,228,.10), transparent 60%), radial-gradient(800px 460px at 5% 10%, rgba(0,116,228,.07), transparent 55%); }
-/* 리드 문단이 이 안에 있어 부모 폭(640px)에 갇힘 — 아래 .about-desc와 같은 720px로 */
-.about-hero .section-head { max-width: 720px; margin-bottom: 0; }
-.about-hero .about-lead { max-width: 720px; margin: 0 auto; text-align: center; font-size: 18px; color: var(--gray-700); }
-.about-hero .about-desc { max-width: 720px; margin: 20px auto 0; text-align: center; font-size: 15.5px; line-height: 1.75; color: var(--gray-500); }
-.about-stats { margin-top: 48px; }
-.about-news { background: var(--surface-2); }
-.news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.news-card { display: flex; flex-direction: column; background: var(--surface-1); border: 1px solid var(--surface-line); border-radius: var(--r-md); overflow: hidden; transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease; }
-.news-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--nfc); }
-.news-thumb { aspect-ratio: 16 / 9; background: var(--gray-100); overflow: hidden; }
-.news-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
-.news-card:hover .news-thumb img { transform: scale(1.05); }
-.news-body { display: flex; flex-direction: column; flex-grow: 1; padding: 22px 22px 24px; }
-.news-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
-.news-outlet { font-size: 12px; font-weight: 800; color: var(--nfc-dark); background: rgba(0,116,228,.08); padding: 4px 11px; border-radius: 999px; }
-.news-date { font-size: 12.5px; font-weight: 600; color: var(--gray-500); }
-.news-card h3 { font-size: 16px; font-weight: 800; line-height: 1.45; flex-grow: 1; }
-.news-go { margin-top: 18px; font-size: 13px; font-weight: 800; color: var(--nfc-dark); }
-.about-cta-box { background: var(--surface-dark); color: #fff; border-radius: var(--r-lg); padding: 60px 32px; text-align: center; }
-.about-cta-box h3 { font-size: clamp(22px, 3vw, 30px); font-weight: 800; line-height: 1.35; }
-.about-cta-box > p { margin-top: 14px; color: rgba(255,255,255,.72); font-size: 16px; }
-.about-cta-box .event-cta { margin-top: 30px; }
-
-/* --- 고객지원 --- */
-.support-hero { padding: 120px 0 40px; background: radial-gradient(1000px 460px at 80% -10%, rgba(0,116,228,.10), transparent 60%); }
-/* 전역 .section-head의 52px 하단 여백은 카드가 딸린 섹션용 — 여기선 히어로 padding이 그 역할을 한다 */
-.support-hero .section-head { margin-bottom: 0; }
-.support-entry { background: var(--surface-2); padding: 56px 0; }
-.support-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 860px; margin: 0 auto; }
-.support-nav-card { display: flex; flex-direction: column; text-align: center; background: var(--surface-1); border: 1px solid var(--surface-line); border-radius: var(--r-md); padding: 30px 28px; transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease; }
-.support-nav-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--nfc); }
-.support-nav-card h3 { font-size: 18px; font-weight: 800; }
-.support-nav-card p { margin-top: 10px; font-size: 14px; color: var(--gray-500); flex-grow: 1; }
-.support-nav-card .cc-go { display: block; margin-top: 18px; font-size: 13.5px; font-weight: 800; color: var(--nfc-dark); }
-
-.nfc-guide { background: var(--surface-1); }
-.guide-tabs { display: flex; gap: 10px; justify-content: center; margin-bottom: 36px; }
-.guide-tab { padding: 12px 26px; border-radius: 999px; border: 1.5px solid var(--gray-300); background: var(--surface-1); font-weight: 700; font-size: 15px; color: var(--gray-700); transition: .15s; }
-.guide-tab.active { background: var(--ink); color: #fff; border-color: var(--ink); }
-.guide-panel { display: none; }
-.guide-panel.active { display: block; }
-.guide-steps { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
-.guide-step { flex: 1 1 200px; max-width: 240px; background: var(--surface-1); border: 1px solid var(--surface-line); border-radius: var(--r-md); padding: 28px 22px; text-align: center; }
-.guide-step .badge { width: 42px; height: 42px; margin: 0 auto 14px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--nfc)); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; line-height: 1; font-variant-numeric: tabular-nums; }
-.guide-step h4 { font-size: 15.5px; font-weight: 800; }
-.guide-step p { margin-top: 8px; font-size: 13.5px; color: var(--gray-500); }
-.guide-trouble { margin-top: 48px; background: var(--surface-1); border: 1px solid var(--surface-line); border-radius: var(--r-lg); padding: 40px 32px; }
-.guide-trouble h3 { text-align: center; font-size: 20px; font-weight: 800; }
-.guide-trouble .gt-sub { text-align: center; margin-top: 8px; color: var(--gray-500); font-size: 14px; }
-.gt-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px 24px; margin-top: 30px; }
-.gt-item { display: flex; gap: 12px; font-size: 13.5px; line-height: 1.55; color: var(--gray-700); }
-.gt-item .gt-ico { font-size: 22px; flex-shrink: 0; line-height: 1.2; }
-.gt-item .gt-ico svg { width: 22px; height: 22px; display: block; color: var(--brand); }
-.gt-item b { color: var(--ink); }
-.support-faq { background: var(--surface-2); }
-.support-faq-cta { text-align: center; margin-top: 44px; }
-.support-faq-cta p { color: var(--gray-500); font-size: 15px; margin-bottom: 16px; }
-
 @media (max-width: 1024px) {
   .news-grid { grid-template-columns: 1fr 1fr; }
 }
@@ -586,7 +591,6 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   .support-hero { padding: 100px 0 32px; }
   .support-entry { padding: 40px 0; }
 }
-
 /* 데스크톱(>780px) 본문 가독성: 읽는 텍스트만 +1px. 모바일은 기존 크기 유지 */
 @media (min-width: 781px) {
   .section-head p { font-size: 17px; }
