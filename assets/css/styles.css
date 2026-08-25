@@ -527,8 +527,10 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
 
 /* --- 회사소개 --- */
 .about-hero { padding: 132px 0 80px; background: radial-gradient(1000px 460px at 80% -10%, rgba(0,116,228,.10), transparent 60%), radial-gradient(800px 460px at 5% 10%, rgba(0,116,228,.07), transparent 55%); }
-.about-hero .section-head { margin-bottom: 28px; }
-.about-lead { max-width: 780px; margin: 0 auto; text-align: center; color: var(--gray-700); font-size: 16px; }
+/* 리드 문단이 이 안에 있어 부모 폭(640px)에 갇힘 — 아래 .about-desc와 같은 720px로 */
+.about-hero .section-head { max-width: 720px; margin-bottom: 0; }
+.about-hero .about-lead { max-width: 720px; margin: 0 auto; text-align: center; font-size: 18px; color: var(--gray-700); }
+.about-hero .about-desc { max-width: 720px; margin: 20px auto 0; text-align: center; font-size: 15.5px; line-height: 1.75; color: var(--gray-500); }
 .about-stats { margin-top: 48px; }
 .about-news { background: var(--surface-2); }
 .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -604,7 +606,6 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   .process-step p { font-size: 14px; }
   .contact-card p, .support-nav-card p { font-size: 15px; }
   .pf-d-body p { font-size: 16px; }
-  .about-lead { font-size: 17px; }
   .guide-step h4 { font-size: 16px; }
   .guide-step p { font-size: 14.5px; }
   .gt-item { font-size: 14.5px; }
