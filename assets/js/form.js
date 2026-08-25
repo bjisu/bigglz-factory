@@ -69,7 +69,7 @@ function updateSubmitState() {
   btn.disabled = missing.length > 0;
 
   if (hint) {
-    hint.textContent = missing.length ? `${missing.join(', ')}이(가) 남았어요` : '';
+    hint.textContent = missing.length ? '필수 항목을 입력해주세요.' : '';
   }
 }
 
