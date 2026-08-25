@@ -20,3 +20,6 @@ dist/
 # 로그
 *.log
 npm-debug.log*
+
+# 별도 git 저장소가 들어 있는 옛 작업본 (배포/추적 대상 아님)
+bigglz-factory/
