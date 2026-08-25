@@ -56,6 +56,7 @@ function getMissingFields() {
   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val('email'))) missing.push('올바른 이메일 형식');
   if (!hasPick('goodsPick')) missing.push('제작 굿즈');
   if (!hasPick('qtyPick')) missing.push('제작 수량');
+  if (!hasPick('packPick')) missing.push('포장 여부');
 
   return missing;
 }

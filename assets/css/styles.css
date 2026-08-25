@@ -344,6 +344,7 @@ body.pf-locked { overflow: hidden; }
 .inquiry-head .eyebrow { background: rgba(0,116,228,.08); color: var(--brand); }
 .inquiry-head h2 { font-size: clamp(24px, 3vw, 32px); font-weight: 800; }
 .inquiry-head p { margin-top: 12px; color: var(--gray-500); }
+.inquiry-note-top { margin-top: 10px; font-size: 13px; color: var(--gray-500); }
 
 .inquiry-form { max-width: 760px; margin: 0 auto; background: var(--surface-1); border-radius: var(--r-lg); padding: 44px; box-shadow: var(--shadow-lg); border: 1px solid var(--surface-line); }
 .form-section { padding-top: 32px; margin-top: 24px; border-top: 1px solid var(--gray-100); }
@@ -352,7 +353,8 @@ body.pf-locked { overflow: hidden; }
 
 .field { margin-bottom: 22px; }
 .field label { display: block; font-size: 13.5px; font-weight: 700; margin-bottom: 9px; }
-.field label .req { color: var(--nfc); }
+/* 라벨 밖(상단 안내 문장)에서도 같은 색이 나오도록 독립 규칙으로 둔다 */
+.req { color: var(--nfc); font-weight: 700; }
 .field input[type=text], .field input[type=tel], .field input[type=email], .field input[type=date], .field textarea {
   width: 100%; padding: 14px 16px; border-radius: var(--r-sm); border: 1.5px solid var(--gray-300); font-size: 15px; background: var(--surface-1);
   transition: border-color .15s ease;
