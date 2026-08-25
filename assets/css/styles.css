@@ -495,8 +495,6 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
 @media (min-width: 900px) {
   .pf-modal-panel { top: 40px; bottom: 40px; left: 0; right: 0; width: min(920px, calc(100% - 48px)); margin: 0 auto; border-radius: var(--r-lg); box-shadow: 0 40px 90px -24px rgba(10,12,24,.55); }
 }
-/* ---------- Responsive ---------- */
-/* 1025~1240px: 히어로가 2열이라 오른쪽 컬럼이 520px 장면보다 좁다 → 장면 축소 */
 @media (min-width: 1025px) and (max-width: 1240px) {
   .tag-scene { --u: .85px; }
 }
@@ -509,8 +507,9 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   .contact-grid { grid-template-columns: repeat(2, 1fr); }
   .pf-grid { grid-template-columns: repeat(3, 1fr); }
   .process-track { grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  /* --- 아래는 원래 별도 블록이었던 규칙 --- */
+  .news-grid { grid-template-columns: 1fr 1fr; }
 }
-/* 헤더가 한 줄에 안 들어가는 폭부터 햄버거로 전환 */
 @media (max-width: 900px) {
   .nav-desktop, .header-actions .btn-kakao { display: none; }
   .menu-toggle { display: flex; flex-shrink: 0; }
@@ -549,15 +548,19 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   .logo-track { gap: 16px; }
   .trust-stats { gap: 28px; }
   .hero + .portfolio { padding-top: 48px; }
-
   /* iOS 사파리는 16px 미만 입력창에 포커스하면 화면을 확대한다 */
   .field input[type=text], .field input[type=tel], .field input[type=email],
   .field input[type=date], .field input[type=file], .field select, .field textarea {
     font-size: 16px;
   }
   .upload-box input[type=file] { font-size: 16px; }
-
   /* 터치 영역 확보: 푸터 링크 44px, 소셜 아이콘 44x44 */
+  /* --- 아래는 원래 별도 블록이었던 규칙 --- */
+  .support-nav, .news-grid { grid-template-columns: 1fr; }
+  .gt-grid { grid-template-columns: 1fr; }
+  .about-hero { padding-top: 112px; }
+  .support-hero { padding: 100px 0 32px; }
+  .support-entry { padding: 40px 0; }
 }
 @media (max-width: 480px) {
   .support-faq-cta { padding: 32px 20px; }
@@ -588,17 +591,6 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   /* 320px 대에서는 컨테이너 내부 폭이 272px 뿐 */
   .tag-scene { --u: .52px; }
 }
-@media (max-width: 1024px) {
-  .news-grid { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 780px) {
-  .support-nav, .news-grid { grid-template-columns: 1fr; }
-  .gt-grid { grid-template-columns: 1fr; }
-  .about-hero { padding-top: 112px; }
-  .support-hero { padding: 100px 0 32px; }
-  .support-entry { padding: 40px 0; }
-}
-/* 데스크톱(>780px) 본문 가독성: 읽는 텍스트만 +1px. 모바일은 기존 크기 유지 */
 @media (min-width: 781px) {
   .section-head p { font-size: 17px; }
   .value-card p { font-size: 15.5px; }
