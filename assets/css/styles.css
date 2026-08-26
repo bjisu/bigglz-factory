@@ -109,8 +109,7 @@ section { position: relative; }
 .header-actions .btn { padding: 11px 20px; font-size: 14px; }
 /* 오른쪽 버튼 문구가 페이지마다 달라(NFC 제작 문의 / ← 홈으로) 폭이 어긋나면
    페이지를 옮길 때 내비게이션 전체가 좌우로 밀린다 — 둘의 폭을 맞춰 고정한다 */
-.header-actions .btn-primary,
-.header-actions .btn-home { min-width: 124px; }
+.header-actions .btn-primary { min-width: 124px; }
 .header-actions .btn-primary { box-shadow: none; }
 .header-actions .btn-primary:hover { box-shadow: none; filter: brightness(1.06); }
 .btn-kakao { background: #FEE500; color: #191919; }
@@ -445,15 +444,9 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
 .about-cta-box .event-cta { margin-top: 30px; }
 
 /* --- 고객지원 --- */
-.support-hero { padding: 120px 0 40px; background: radial-gradient(1000px 460px at 80% -10%, rgba(0,116,228,.10), transparent 60%); }
+.support-hero { padding: 120px 0 16px; background: radial-gradient(1000px 460px at 80% -10%, rgba(0,116,228,.10), transparent 60%); }
 /* 전역 .section-head의 52px 하단 여백은 카드가 딸린 섹션용 — 여기선 히어로 padding이 그 역할을 한다 */
 .support-hero .section-head { margin-bottom: 0; }
-.support-entry { background: var(--surface-2); padding: 56px 0; }
-.support-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 860px; margin: 0 auto; }
-.support-nav-card { display: flex; flex-direction: column; text-align: center; background: var(--surface-1); border: 1px solid var(--surface-line); border-radius: var(--r-md); padding: 30px 28px; transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease; }
-.support-nav-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--nfc); }
-.support-nav-card h3 { font-size: 18px; font-weight: 800; }
-.support-nav-card p { margin-top: 10px; font-size: 14px; color: var(--gray-500); flex-grow: 1; }
 
 .nfc-guide { background: var(--surface-1); }
 .guide-tabs { display: flex; gap: 10px; justify-content: center; margin-bottom: 36px; }
@@ -516,7 +509,6 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   .nav-desktop, .header-actions .btn-kakao { display: none; }
   .menu-toggle { display: flex; flex-shrink: 0; }
   /* 로고 클릭으로 홈 이동이 가능하므로 모바일에선 숨김 */
-  .header-actions .btn-home { display: none; }
 }
 @media (max-width: 780px) {
   body { padding-bottom: 64px; }
@@ -558,11 +550,10 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   .upload-box input[type=file] { font-size: 16px; }
   /* 터치 영역 확보: 푸터 링크 44px, 소셜 아이콘 44x44 */
   /* --- 아래는 원래 별도 블록이었던 규칙 --- */
-  .support-nav, .news-grid { grid-template-columns: 1fr; }
+  .news-grid { grid-template-columns: 1fr; }
   .gt-grid { grid-template-columns: 1fr; }
   .about-hero { padding-top: 112px; }
   .support-hero { padding: 100px 0 32px; }
-  .support-entry { padding: 40px 0; }
 
   /* --- 모바일 타이포·이미지 한 단계 축소 (패딩·터치영역은 그대로) --- */
   .hero-copy h1 { font-size: 28px; }
@@ -620,7 +611,7 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   .pf-body h4 { font-size: 15px; }
   .process-step h4 { font-size: 16px; }
   .process-step p { font-size: 14px; }
-  .contact-card p, .support-nav-card p { font-size: 15px; }
+  .contact-card p { font-size: 15px; }
   .pf-d-body p { font-size: 16px; }
   .guide-step h4 { font-size: 16px; }
   .guide-step p { font-size: 14.5px; }
