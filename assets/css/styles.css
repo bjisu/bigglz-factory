@@ -558,8 +558,9 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   /* --- 모바일 타이포·이미지 한 단계 축소 (패딩·터치영역은 그대로) --- */
   .hero-copy h1 { font-size: 28px; }
   .hero-copy p { font-size: 15.5px; }
+  .hero-stats { gap: 18px; }
   .hero-stats div b { font-size: 19px; line-height: 1.2; }
-  .hero-stats div span { font-size: 12.5px; }
+  .hero-stats div span { font-size: 12.5px; line-height: 1.35; }
   .eyebrow { font-size: 12.5px; }
   .section-head h2 { font-size: 24px; }
   .section-head p { font-size: 14.5px; }
@@ -569,7 +570,8 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   .contact-card p { font-size: 13.5px; }
   .process-step h4 { font-size: 14.5px; }
   .process-step p { font-size: 12.5px; }
-  .trust-stats b { font-size: 19px; }
+  .trust-stats b { font-size: 19px; line-height: 1.2; }
+  .trust-stats span { line-height: 1.35; }
   .btn { font-size: 14px; }
   .btn-lg { font-size: 15px; }
   .logo img { height: 30px; }
