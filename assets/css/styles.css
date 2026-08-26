@@ -335,6 +335,9 @@ body.pf-locked { overflow: hidden; }
 .event-sol .value-card.ev-highlight { border-color: var(--nfc); background: rgba(0,116,228,.04); box-shadow: 0 0 0 1px var(--nfc) inset; }
 .event-sol .value-card.ev-highlight .num { color: var(--nfc-dark); }
 .event-cta { display: flex; gap: 12px; justify-content: center; margin-top: 44px; flex-wrap: wrap; }
+/* btn-ghost만 1.5px 테두리가 있어 한 줄일 땐 flex stretch가 가려주지만,
+   좁은 화면에서 세로로 쌓이면 2px 차이가 드러난다 — 투명 테두리로 맞춘다 */
+.event-cta .btn-primary { border: 1.5px solid transparent; }
 
 /* ---------- Inquiry form (goods inquiry) ---------- */
 .inquiry { background: var(--surface-2); }
