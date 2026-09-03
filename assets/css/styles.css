@@ -130,7 +130,6 @@ section { position: relative; }
 .hero { padding: 168px 0 var(--pad-section); background: radial-gradient(1100px 500px at 80% -10%, rgba(0,116,228,.10), transparent 60%), radial-gradient(900px 500px at 5% 10%, rgba(0,116,228,.08), transparent 55%); }
 .hero .container { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
 .hero-copy h1 { font-size: clamp(34px, 5vw, 54px); font-weight: 800; letter-spacing: -.03em; line-height: 1.28; }
-.hero-copy h1 .grad { background: linear-gradient(120deg, var(--brand), var(--nfc)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .hero-copy p { margin-top: 22px; font-size: 18px; color: var(--gray-700); max-width: 480px; }
 .hero-cta { display: flex; gap: 12px; margin-top: 34px; flex-wrap: wrap; }
 .hero-stats { display: flex; gap: 28px; margin-top: 32px; }
@@ -320,9 +319,8 @@ body.pf-locked { overflow: hidden; }
 /* ---------- Contact hub (문의 종류 선택) ---------- */
 .contact-hub { background: var(--surface-1); }
 .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.contact-card { display: flex; flex-direction: column; align-items: center; text-align: center; background: var(--surface-1); border: 1px solid var(--surface-line); border-radius: var(--r-md); padding: 40px 28px; transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease; }
-/* 섹션이 흰색이라 기본 --surface-line 테두리로는 카드 경계가 안 보임 */
-.contact-hub .contact-card { border-color: var(--gray-300); }
+/* 섹션이 흰색이라 기본 --surface-line 테두리로는 카드 경계가 안 보이므로 --gray-300을 쓴다 */
+.contact-card { display: flex; flex-direction: column; align-items: center; text-align: center; background: var(--surface-1); border: 1px solid var(--gray-300); border-radius: var(--r-md); padding: 40px 28px; transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease; }
 .contact-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--nfc); }
 .contact-card .cc-icon { width: 60px; height: 60px; border-radius: 50%; background: rgba(0,116,228,.09); color: var(--brand); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; transition: background .2s ease; }
 .contact-card .cc-icon svg { width: 26px; height: 26px; display: block; }
