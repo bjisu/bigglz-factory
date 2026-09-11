@@ -333,9 +333,10 @@ body.pf-locked { overflow: hidden; }
 .event-sol .value-card.ev-highlight { border-color: var(--nfc); background: rgba(0,116,228,.04); box-shadow: 0 0 0 1px var(--nfc) inset; }
 .event-sol .value-card.ev-highlight .num { color: var(--nfc-dark); }
 .event-cta { display: flex; gap: 12px; justify-content: center; margin-top: 44px; flex-wrap: wrap; }
-/* btn-ghost만 1.5px 테두리가 있어 한 줄일 땐 flex stretch가 가려주지만,
-   좁은 화면에서 세로로 쌓이면 2px 차이가 드러난다 — 투명 테두리로 맞춘다 */
-.event-cta .btn-primary { border: 1.5px solid transparent; }
+/* CTA 버튼 — 헤더 버튼과 동일한 크기·그림자 */
+.event-cta .btn { padding: 11px 20px; font-size: 14px; }
+.event-cta .btn-primary { min-width: 124px; box-shadow: none; }
+.event-cta .btn-primary:hover { box-shadow: none; filter: brightness(1.06); }
 
 /* ---------- Inquiry form (goods inquiry) ---------- */
 .inquiry { background: var(--surface-2); }
@@ -382,14 +383,11 @@ body.pf-locked { overflow: hidden; }
 
 #goodsPick .pick { min-height: 84px; }
 
-.upload-box { border: 1.5px dashed var(--gray-300); border-radius: var(--r-sm); padding: 26px; text-align: center; font-size: 13.5px; color: var(--gray-500); cursor: pointer; }
-.upload-box:hover { border-color: var(--nfc); color: var(--nfc-dark); }
-.upload-box input { display: none; }
-.upload-filename { margin-top: 8px; font-size: 13px; font-weight: 700; color: var(--ink); }
 
 .inquiry-form .btn-block { margin-top: 8px; }
 /* min-height로 자리를 잡아둬야 문구가 나타났다 사라질 때 버튼이 흔들리지 않는다 */
 .submit-hint { margin-top: 10px; text-align: center; font-size: 13px; color: var(--gray-500); min-height: 18px; }
+.submit-hint.is-error { color: #d92d20; font-weight: 700; }
 
 .form-success { display: none; text-align: center; padding: 30px 0; }
 .form-success.show { display: block; }
@@ -547,7 +545,6 @@ footer { background: #14141c; color: rgba(255,255,255,.65); padding: 64px 0 32px
   .field input[type=date], .field input[type=file], .field select, .field textarea {
     font-size: 16px;
   }
-  .upload-box input[type=file] { font-size: 16px; }
   /* 터치 영역 확보: 푸터 링크 44px, 소셜 아이콘 44x44 */
   /* --- 아래는 원래 별도 블록이었던 규칙 --- */
   .news-grid { grid-template-columns: 1fr; }

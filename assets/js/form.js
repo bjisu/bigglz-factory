@@ -1,8 +1,26 @@
 // ---------- Inquiry form (goods.html) ----------
 const form = document.getElementById('inquiryForm');
 
+const FORM_ENDPOINT = 'https://formspree.io/f/mdeobwwr';
+
+// 버튼으로 고르는 항목은 FormData에 잡히지 않는다 — 선택값을 숨은 input에 복사해 같이 전송한다
+const PICK_FIELDS = {
+  goodsPick: 'goodsValue',
+  hardwarePick: 'hardwareValue',
+  qtyPick: 'qtyValue',
+  contentHasLinkPick: 'contentHasLinkValue',
+  packPick: 'packValue',
+};
+
+function syncPickValue(gridId) {
+  const target = document.getElementById(PICK_FIELDS[gridId]);
+  if (!target) return;
+  const picked = document.querySelector(`#${gridId} .pick.selected`);
+  target.value = picked ? picked.dataset.value : '';
+}
+
 // pick-grid single/multi select behavior
-['goodsPick', 'hardwarePick', 'qtyPick', 'contentHasLinkPick', 'packPick'].forEach(id => {
+Object.keys(PICK_FIELDS).forEach(id => {
   const grid = document.getElementById(id);
   if (!grid) return;
   grid.addEventListener('click', (e) => {
@@ -10,8 +28,10 @@ const form = document.getElementById('inquiryForm');
     if (!pick) return;
     [...grid.children].forEach(c => c.classList.remove('selected'));
     pick.classList.add('selected');
+    syncPickValue(id);
     updateSubmitState();
   });
+  syncPickValue(id);  // 마크업에 미리 selected가 박혀 있는 항목까지 채운다
 });
 
 // 콘텐츠 링크 유무에 따라 링크 입력창 / 콘텐츠 선택 그리드 전환
@@ -26,16 +46,6 @@ if (contentHasLinkPick) {
     if (contentLinkField) contentLinkField.style.display = hasLink ? 'block' : 'none';
     if (contentPickField) contentPickField.style.display = hasLink ? 'none' : 'block';
     if (hasLink) document.getElementById('contentLink')?.focus();
-  });
-}
-
-// file upload filename display
-const designFile = document.getElementById('designFile');
-if (designFile) {
-  designFile.addEventListener('change', (e) => {
-    const f = e.target.files[0];
-    const filename = document.getElementById('uploadFilename');
-    if (filename) filename.textContent = f ? `선택됨: ${f.name}` : '';
   });
 }
 
@@ -113,8 +123,11 @@ function buildSummary() {
   ].join('\n');
 }
 
-if (form) form.addEventListener('submit', (e) => {
+let sending = false;
+
+if (form) form.addEventListener('submit', async (e) => {
   e.preventDefault();
+  if (sending) return;  // 같은 버튼을 두 번 눌러도 한 번만 보낸다
   const requiredIds = ['companyName', 'managerName', 'phone', 'email'];
   for (const id of requiredIds) {
     const el = document.getElementById(id);
@@ -135,12 +148,43 @@ if (form) form.addEventListener('submit', (e) => {
     return;
   }
   const summary = buildSummary();
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const hint = document.getElementById('submitHint');
+  const originalLabel = submitBtn ? submitBtn.textContent : '';
+
+  sending = true;
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.textContent = '전송 중...';
+  }
+  if (hint) {
+    hint.textContent = '';
+    hint.classList.remove('is-error');
+  }
+
+  try {
+    // Formspree는 multipart/urlencoded로 오는 한글 필드명을 400으로 거절한다 —
+    // 한글 라벨을 그대로 쓰려면 JSON으로 직렬화해서 보내야 한다
+    const payload = Object.fromEntries(new FormData(form).entries());
+    const res = await fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      body: JSON.stringify(payload),
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+    });
+    if (!res.ok) throw new Error(`Formspree responded ${res.status}`);
+  } catch (err) {
+    sending = false;
+    if (submitBtn) submitBtn.textContent = originalLabel;
+    updateSubmitState();
+    if (hint) {
+      hint.textContent = '전송에 실패했습니다. 잠시 후 다시 시도하거나 contact@bigglz.com 으로 보내주세요.';
+      hint.classList.add('is-error');
+    }
+    return;
+  }
+
   form.querySelectorAll('.form-section').forEach(s => s.style.display = 'none');
   document.getElementById('formSuccess')?.classList.add('show');
-
-  const subject = encodeURIComponent(`[굿즈 제작 문의] ${document.getElementById('companyName')?.value || '문의'}`);
-  const body = encodeURIComponent(summary);
-  window.location.href = `mailto:contact@bigglz.com?subject=${subject}&body=${body}`;
 
   const copyBtn = document.getElementById('copyBtn');
   if (copyBtn) copyBtn.onclick = () => {
