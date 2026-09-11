@@ -100,29 +100,6 @@ function updateSubmitState() {
 
 updateSubmitState();
 
-function buildSummary() {
-  const val = (id) => (document.getElementById(id)?.value || '').trim();
-  const selected = (gridId) => [...document.querySelectorAll(`#${gridId} .pick.selected`)].map(p => p.dataset.value).join(', ') || '-';
-  return [
-    `[비글즈 팩토리 굿즈 제작 문의]`,
-    ``,
-    `회사/브랜드명: ${val('companyName') || '-'}`,
-    `담당자: ${val('managerName') || '-'}`,
-    `연락처: ${val('phone') || '-'}`,
-    `이메일: ${val('email') || '-'}`,
-    ``,
-    `제작 굿즈: ${selected('goodsPick')}`,
-    `키링고리(부자재): ${selected('hardwarePick')}`,
-    `제작 수량: ${selected('qtyPick')}`,
-    `NFC 콘텐츠: ${val('contentLink') ? `직접 제공 링크 - ${val('contentLink')}` : (val('contentDesc') || '-')}`,
-    `포장 여부: ${selected('packPick')}`,
-    `필요 시점: ${val('needDate') || '-'}`,
-    ``,
-    `추가 요청사항:`,
-    `${val('message') || '-'}`,
-  ].join('\n');
-}
-
 let sending = false;
 
 if (form) form.addEventListener('submit', async (e) => {
@@ -147,7 +124,6 @@ if (form) form.addEventListener('submit', async (e) => {
     needDate.focus();
     return;
   }
-  const summary = buildSummary();
   const submitBtn = form.querySelector('button[type="submit"]');
   const hint = document.getElementById('submitHint');
   const originalLabel = submitBtn ? submitBtn.textContent : '';
@@ -186,13 +162,8 @@ if (form) form.addEventListener('submit', async (e) => {
   form.querySelectorAll('.form-section').forEach(s => s.style.display = 'none');
   document.getElementById('formSuccess')?.classList.add('show');
 
-  const copyBtn = document.getElementById('copyBtn');
-  if (copyBtn) copyBtn.onclick = () => {
-    navigator.clipboard.writeText(summary).then(() => {
-      const btn = copyBtn;
-      const original = btn.textContent;
-      btn.textContent = '복사 완료!';
-      setTimeout(() => btn.textContent = original, 1800);
-    });
-  };
+  // 제출 뒤에는 폼이 사라져 #goods-entry 앵커가 완료 화면만 다시 비춘다 —
+  // 헤더와 하단 고정 버튼을 페이지 새로고침으로 바꿔 빈 폼이 열리게 한다.
+  // 작성 중에 바꾸면 입력값이 날아가므로 성공한 뒤에만 손댄다.
+  document.querySelectorAll('a[href="#goods-entry"]').forEach(a => { a.href = 'goods.html'; });
 });
